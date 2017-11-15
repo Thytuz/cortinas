@@ -58,7 +58,7 @@
                 <div class="container">
                     <div class="items-sec">
                         <div class="col-md-3 feature-grid">
-                            <a href="product.html"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/_89392793_037e_600x600.jpg" alt=""/>	
+                            <a href="detalheproduto.jsp"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/_89392793_037e_600x600.jpg" alt=""/>	
                                 <div class="arrival-info">
                                     <h4>Item #1</h4>
                                     <p>Rs 12000</p>
@@ -66,12 +66,12 @@
                                     <span class="disc">[12%]</span>
                                 </div>
                                 <div class="viw">
-                                    <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
+                                    <a href="detalheproduto.jsp"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
                                 </div>
                             </a>
                         </div>
                         <div class="col-md-3 feature-grid">
-                            <a href="product.html"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/abracadeira_franjas_chocolate_89360145_d0e0_600x600.jpg" alt=""/>	
+                            <a href="detalheproduto.jsp"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/abracadeira_franjas_chocolate_89360145_d0e0_600x600.jpg" alt=""/>	
                                 <div class="arrival-info">
                                     <h4>Item #1</h4>
                                     <p>Rs 10000</p>
@@ -79,12 +79,12 @@
                                     <span class="disc">[14%]</span>
                                 </div>
                                 <div class="viw">
-                                    <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
+                                    <a href="detalheproduto.jsp"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
                                 </div>
                             </a>
                         </div>
                         <div class="col-md-3 feature-grid">
-                            <a href="product.html"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/_89392793_037e_600x600.jpg" alt=""/>	
+                            <a href="detalheproduto.jsp"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/_89392793_037e_600x600.jpg" alt=""/>	
                                 <div class="arrival-info">
                                     <h4>Item #1</h4>
                                     <p>Rs 8500</p>
@@ -92,12 +92,12 @@
                                     <span class="disc">[10%]</span>
                                 </div>
                                 <div class="viw">
-                                    <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
+                                    <a href="detalheproduto.jsp"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
                                 </div>
                             </a>
                         </div>
                         <div class="col-md-3 feature-grid">
-                            <a href="product.html"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/abracadeira_franjas_chocolate_89360145_d0e0_600x600.jpg" alt=""/>	
+                            <a href="detalheproduto.jsp"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/abracadeira_franjas_chocolate_89360145_d0e0_600x600.jpg" alt=""/>	
                                 <div class="arrival-info">
                                     <h4>Item #1</h4>
                                     <p>Rs 12000</p>
@@ -105,7 +105,7 @@
                                     <span class="disc">[12%]</span>
                                 </div>
                                 <div class="viw">
-                                    <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
+                                    <a href="detalheproduto.jsp"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
                                 </div>
                             </a>
                         </div>
@@ -113,7 +113,7 @@
                     </div>
                     <div class="items-sec btm-sec">
                         <div class="col-md-3 feature-grid">
-                            <a href="product.html"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/_89389860_4e08_600x600.jpg" alt=""/>	
+                            <a href="detalheproduto.jsp"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/_89389860_4e08_600x600.jpg" alt=""/>	
                                 <div class="arrival-info">
                                     <h4>Item #1</h4>
                                     <p>Rs 500</p>
@@ -121,12 +121,12 @@
                                     <span class="disc">[8%]</span>
                                 </div>
                                 <div class="viw">
-                                    <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
+                                    <a href="detalheproduto.jsp"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
                                 </div>
                             </a>
                         </div>
                         <div class="col-md-3 feature-grid">
-                            <a href="product.html"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/abracadeira_franjas_chocolate_89360145_d0e0_600x600.jpg" alt=""/>	
+                            <a href="detalheproduto.jsp"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/abracadeira_franjas_chocolate_89360145_d0e0_600x600.jpg" alt=""/>	
                                 <div class="arrival-info">
                                     <h4>Item #1</h4>
                                     <p>Rs 400</p>
@@ -134,12 +134,12 @@
                                     <span class="disc">[12%]</span>
                                 </div>
                                 <div class="viw">
-                                    <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
+                                    <a href="detalheproduto.jsp"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
                                 </div>
                             </a>
                         </div>
                         <div class="col-md-3 feature-grid">
-                            <a href="product.html"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/_89389860_4e08_600x600.jpg" alt=""/>	
+                            <a href="detalheproduto.jsp"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/_89389860_4e08_600x600.jpg" alt=""/>	
                                 <div class="arrival-info">
                                     <h4>Item #1</h4>
                                     <p>Rs 800</p>
@@ -147,12 +147,12 @@
                                     <span class="disc">[12%]</span>
                                 </div>
                                 <div class="viw">
-                                    <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
+                                    <a href="detalheproduto.jsp"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
                                 </div>
                             </a>
                         </div>
                         <div class="col-md-3 feature-grid">
-                            <a href="product.html"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/abracadeira_franjas_chocolate_89360145_d0e0_600x600.jpg" alt=""/>	
+                            <a href="detalheproduto.jsp"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/abracadeira_franjas_chocolate_89360145_d0e0_600x600.jpg" alt=""/>	
                                 <div class="arrival-info">
                                     <h4>Item #1</h4>
                                     <p>Rs 600</p>
@@ -160,7 +160,7 @@
                                     <span class="disc">[50%]</span>
                                 </div>
                                 <div class="viw">
-                                    <a href="product.html"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
+                                    <a href="detalheproduto.jsp"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
                                 </div>
                             </a>
                         </div>

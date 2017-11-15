@@ -14,7 +14,7 @@
                     </ol>
                     <h2>Nossos Produtos</h2>			
                     <div class="col-md-9 product-model-sec">
-                        <a href="single.html"><div class="product-grid">
+                        <a href="detalheproduto.jsp"><div class="product-grid">
                                 <div class="more-product"><span> </span></div>						
                                 <div class="product-img b-link-stripe b-animate-go  thickbox">
                                     <img src="images/p1.jpg" class="img-responsive" alt="">
@@ -29,8 +29,8 @@
                                 <h4>Lights #1</h4>								
                                 <span class="item_price">$187.95</span>
                                 <div class="ofr">
-                                    <p class="pric1"><del>Rs 280</del></p>
-                                    <p class="disc">[12% Off]</p>
+                                    <p class="pric1"><del>R$ 280</del></p>
+                                    <p class="disc">[12% mais barato]</p>
                                 </div>
                                 <input type="text" class="item_quantity" value="1" />
                                 <input type="button" class="item_add items" value="ADD">
@@ -40,7 +40,7 @@
                         </div>
                     </div>	
 
-                    <a href="single.html"><div class="product-grid">
+                    <a href="detalheproduto.jsp"><div class="product-grid">
                             <div class="more-product"><span> </span></div>						
                             <div class="product-img b-link-stripe b-animate-go  thickbox">
                                 <img src="images/p2.jpg" class="img-responsive" alt=""/>
@@ -55,8 +55,8 @@
                             <h4>Lights #1</h4>								
                             <span class="item_price">$187.95</span>	
                             <div class="ofr">
-                                <p class="pric1"><del>Rs 280</del></p>
-                                <p class="disc">[12% Off]</p>
+                                <p class="pric1"><del>R$ 280</del></p>
+                                <p class="disc">[12% mais barato]</p>
                             </div>
                             <input type="text" class="item_quantity" value="1" />
                             <input type="button" class="item_add items" value="ADD">
@@ -65,7 +65,7 @@
                     </div>
                 </div>
 
-                <a href="single.html"><div class="product-grid">
+                <a href="detalheproduto.jsp"><div class="product-grid">
                         <div class="more-product"><span> </span></div>						
                         <div class="product-img b-link-stripe b-animate-go  thickbox">
                             <img src="images/p3.jpg" class="img-responsive" alt=""/>
@@ -80,8 +80,8 @@
                         <h4>Lights #1</h4>								
                         <span class="item_price">$187.95</span>	
                         <div class="ofr">
-                            <p class="pric1"><del>Rs 280</del></p>
-                            <p class="disc">[12% Off]</p>
+                            <p class="pric1"><del>R$ 280</del></p>
+                            <p class="disc">[12% mais barato]</p>
                         </div>
                         <input type="text" class="item_quantity" value="1" />
                         <input type="button" class="item_add items" value="ADD">
@@ -90,7 +90,7 @@
                 </div>
             </div>
 
-            <a href="single.html"><div class="product-grid">
+            <a href="detalheproduto.jsp"><div class="product-grid">
                     <div class="more-product"><span> </span></div>						
                     <div class="product-img b-link-stripe b-animate-go  thickbox">
                         <img src="images/p4.jpg" class="img-responsive" alt=""/>
@@ -105,8 +105,8 @@
                     <h4>Lights #1</h4>								
                     <span class="item_price">$187.95</span>	
                     <div class="ofr">
-                        <p class="pric1"><del>Rs 280</del></p>
-                        <p class="disc">[12% Off]</p>
+                        <p class="pric1"><del>R$ 280</del></p>
+                        <p class="disc">[12% mais barato]</p>
                     </div>
                     <input type="text" class="item_quantity" value="1" />
                     <input type="button" class="item_add items" value="ADD">
@@ -115,7 +115,7 @@
             </div>
         </div>
 
-        <a href="single.html"><div class="product-grid">
+        <a href="detalheproduto.jsp"><div class="product-grid">
                 <div class="more-product"><span> </span></div>						
                 <div class="product-img b-link-stripe b-animate-go  thickbox">
                     <img src="images/p5.jpg" class="img-responsive" alt=""/>
@@ -130,8 +130,8 @@
                 <h4>Lights #1</h4>								
                 <span class="item_price">$187.95</span>	
                 <div class="ofr">
-                    <p class="pric1"><del>Rs 280</del></p>
-                    <p class="disc">[12% Off]</p>
+                    <p class="pric1"><del>R$ 280</del></p>
+                    <p class="disc">[12% mais barato]</p>
                 </div>
                 <input type="text" class="item_quantity" value="1" />
                 <input type="button" class="item_add items" value="ADD">
@@ -140,7 +140,7 @@
         </div>
     </div>
 
-    <a href="single.html"><div class="product-grid">
+    <a href="detalheproduto.jsp"><div class="product-grid">
             <div class="more-product"><span> </span></div>						
             <div class="product-img b-link-stripe b-animate-go  thickbox">
                 <img src="images/p6.jpg" class="img-responsive" alt=""/>
@@ -155,8 +155,8 @@
             <h4>Lights #1</h4>								
             <span class="item_price">$187.95</span>	
             <div class="ofr">
-                <p class="pric1"><del>Rs 280</del></p>
-                <p class="disc">[12% Off]</p>
+                <p class="pric1"><del>R$ 280</del></p>
+                <p class="disc">[12% mais barato]</p>
             </div>
             <input type="text" class="item_quantity" value="1" />
             <input type="button" class="item_add items" value="ADD">
@@ -164,7 +164,7 @@
         </div>						
     </div>
 </div>
-<a href="single.html"><div class="product-grid">
+<a href="detalheproduto.jsp"><div class="product-grid">
         <div class="more-product"><span> </span></div>						
         <div class="product-img b-link-stripe b-animate-go  thickbox">
             <img src="images/p7.jpg" class="img-responsive" alt=""/>
@@ -179,8 +179,8 @@
         <h4>Lights #1</h4>								
         <span class="item_price">$187.95</span>	
         <div class="ofr">
-            <p class="pric1"><del>Rs 280</del></p>
-            <p class="disc">[12% Off]</p>
+            <p class="pric1"><del>R$ 280</del></p>
+            <p class="disc">[12% mais barato]</p>
         </div>
         <input type="text" class="item_quantity" value="1" />
         <input type="button" class="item_add items" value="ADD">
@@ -188,7 +188,7 @@
     </div>						
 </div>
 </div>
-<a href="single.html"><div class="product-grid">
+<a href="detalheproduto.jsp"><div class="product-grid">
         <div class="more-product"><span> </span></div>						
         <div class="product-img b-link-stripe b-animate-go  thickbox">
             <img src="images/p8.jpg" class="img-responsive" alt=""/>
@@ -203,8 +203,8 @@
         <h4>Lights #1</h4>								
         <span class="item_price">$187.95</span>	
         <div class="ofr">
-            <p class="pric1"><del>Rs 280</del></p>
-            <p class="disc">[12% Off]</p>
+            <p class="pric1"><del>R$ 280</del></p>
+            <p class="disc">[12% mais barato]</p>
         </div>
         <input type="text" class="item_quantity" value="1" />
         <input type="button" class="item_add items" value="ADD">
@@ -212,7 +212,7 @@
     </div>						
 </div>
 </div>
-<a href="single.html"><div class="product-grid">
+<a href="detalheproduto.jsp"><div class="product-grid">
         <div class="more-product"><span> </span></div>						
         <div class="product-img b-link-stripe b-animate-go  thickbox">
             <img src="images/p9.jpg" class="img-responsive" alt=""/>
@@ -227,8 +227,8 @@
         <h4>Lights #1</h4>								
         <span class="item_price">$187.95</span>	
         <div class="ofr">
-            <p class="pric1"><del>Rs 280</del></p>
-            <p class="disc">[12% Off]</p>
+            <p class="pric1"><del>R$ 280</del></p>
+            <p class="disc">[12% mais barato]</p>
         </div>
         <input type="text" class="item_quantity" value="1" />
         <input type="button" class="item_add items" value="ADD">
@@ -237,7 +237,7 @@
 </div>
 </div>
 <!---728x90--->
-<a href="single.html"><div class="product-grid">
+<a href="detalheproduto.jsp"><div class="product-grid">
         <div class="more-product"><span> </span></div>						
         <div class="product-img b-link-stripe b-animate-go  thickbox">
             <img src="images/p10.jpg" class="img-responsive" alt=""/>
@@ -252,8 +252,8 @@
         <h4>Lights #1</h4>								
         <span class="item_price">$187.95</span>	
         <div class="ofr">
-            <p class="pric1"><del>Rs 280</del></p>
-            <p class="disc">[12% Off]</p>
+            <p class="pric1"><del>R$ 280</del></p>
+            <p class="disc">[12% mais barato]</p>
         </div>
         <input type="text" class="item_quantity" value="1" />
         <input type="button" class="item_add items" value="ADD">
@@ -261,7 +261,7 @@
     </div>						
 </div>
 </div>
-<a href="single.html"><div class="product-grid">
+<a href="detalheproduto.jsp"><div class="product-grid">
         <div class="more-product"><span> </span></div>						
         <div class="product-img b-link-stripe b-animate-go  thickbox">
             <img src="images/p11.jpg" class="img-responsive" alt=""/>
@@ -276,8 +276,8 @@
         <h4>Lights #1</h4>								
         <span class="item_price">$187.95</span>	
         <div class="ofr">
-            <p class="pric1"><del>Rs 280</del></p>
-            <p class="disc">[12% Off]</p>
+            <p class="pric1"><del>R$ 280</del></p>
+            <p class="disc">[12% mais barato]</p>
         </div>
         <input type="text" class="item_quantity" value="1" />
         <input type="button" class="item_add items" value="ADD">
@@ -285,7 +285,7 @@
     </div>
 </div>
 </div>
-<a href="single.html"><div class="product-grid">
+<a href="detalheproduto.jsp"><div class="product-grid">
         <div class="more-product"><span> </span></div>						
         <div class="product-img b-link-stripe b-animate-go  thickbox">
             <img src="images/p12.jpg" class="img-responsive" alt=""/>
@@ -300,8 +300,8 @@
         <h4>Lights #1</h4>								
         <span class="item_price">$187.95</span>	
         <div class="ofr">
-            <p class="pric1"><del>Rs 280</del></p>
-            <p class="disc">[12% Off]</p>
+            <p class="pric1"><del>R$ 280</del></p>
+            <p class="disc">[12% mais barato]</p>
         </div>
         <input type="text" class="item_quantity" value="1" />
         <input type="button" class="item_add items" value="ADD">
@@ -313,7 +313,7 @@
 <div class="rsidebar span_1_of_left">
     <section  class="sky-form">
         <div class="product_right">
-            <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Categories</h4>
+            <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Categorias</h4>
             <div class="tab1">
                 <ul class="place">								
                     <li class="sort">Home Decorates</li>
@@ -423,10 +423,10 @@
     </section>
 
     <section  class="sky-form">
-        <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>DISCOUNTS</h4>
+        <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Descontos</h4>
         <div class="row row1 scroll-pane">
             <div class="col col-4">
-                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Upto - 10% (20)</label>
+                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Descontos de - 10% (20)</label>
             </div>
             <div class="col col-4">
                 <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>40% - 50% (5)</label>
@@ -438,11 +438,11 @@
     </section>  				 
 
     <section  class="sky-form">
-        <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Price</h4>
+        <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Preço</h4>
         <ul class="dropdown-menu1">
             <li>							               
                 <div id="slider-range"></div>							
-                <input type="text" id="amount" style="border: 0; font-weight: NORMAL;   font-family: 'Dosis-Regular';" />
+                <input disabled type="text" id="amount" style="border: 0; background: none; font-weight: NORMAL;   font-family: 'Dosis-Regular';" />
             </li>			
         </ul>
     </section>
@@ -466,7 +466,7 @@
 
 
     <section  class="sky-form">
-        <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Type</h4>
+        <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Tipo</h4>
         <div class="row row1 scroll-pane">
             <div class="col col-4">
                 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Lights (30)</label>
@@ -481,7 +481,7 @@
         </div>
     </section>
     <section  class="sky-form">
-        <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Brand</h4>
+        <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Marca</h4>
         <div class="row row1 scroll-pane">
             <div class="col col-4">
                 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Everyday</label>

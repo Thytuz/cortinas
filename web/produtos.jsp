@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <!--header-->	
     <jsp:include page="templates/header.html"></jsp:include>

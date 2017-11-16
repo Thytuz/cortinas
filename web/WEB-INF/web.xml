@@ -10,9 +10,17 @@
         <servlet-name>ServletProdutos</servlet-name>
         <servlet-class>controllers.ServletProdutos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletClientes</servlet-name>
+        <servlet-class>controllers.ServletClientes</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletProdutos</servlet-name>
         <url-pattern>/produtos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletClientes</servlet-name>
+        <url-pattern>/clientes</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

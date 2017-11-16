@@ -24,17 +24,17 @@
                                 <h4>Encontre-nos</h4>
                                 <!---728x90--->
                                 <div class="map">
-                                    <iframe src="https://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265&amp;output=embed"></iframe>
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3822.204232318143!2d-49.26516578513365!3d-16.666660388514323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935ef3c2b2aaaa43%3A0xf1c15c99315d0474!2sDiamante+cortinas!5e0!3m2!1spt-BR!2sbr!4v1510832319863" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
                                 </div>
                             </div>
                             <div class="company_address">
                                 <h4>Informações da Empresa</h4>
-                                <p>500 Lorem Ipsum Dolor Sit,</p>
-                                <p>22-56-2-9 Sit Amet, Lorem,</p>
-                                <p>USA</p>
-                                <p>Phone:(00) 222 666 444</p>
-                                <p>Fax: (000) 000 00 00 0</p>
-                                <p>Email: <a href="mailto:info@example.com">info@mycompany.com</a></p>
+                                <p>Diamante Cortinas</p>
+                                <p>R. 74, 525 - St. Central</p>
+                                <p>Goiânia - GO, 74045-020</p>
+                                <p>Brasil</p>
+                                <p>Telefone:(62) 98404-7763</p>
+                                <p>Email: <a href="mailto:diamantecortinas@hotmail.com">diamantecortinas@hotmail.com</a></p>
                                 <p>Follow on: <a href="#">Facebook</a>, <a href="#">Twitter</a></p>
                             </div>
                         </div>				

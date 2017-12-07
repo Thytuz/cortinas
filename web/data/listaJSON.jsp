@@ -4,6 +4,7 @@
     Author     : tatuapu
 --%>
 
+<%@page import="models.ProdutoModel"%>
 <%@page import="models.ClienteModel"%>
 <%@page import="java.io.StringWriter"%>
 <%@page import="org.json.simple.parser.JSONParser"%>
@@ -29,6 +30,28 @@
             dados.put("clieEmail", cm.getClieEmail().toString());
             dados.put("clieTelefone", cm.getClieTelefone().toString());
             dados.put("clieEndereco", cm.getClieEndereco().toString());
+
+            filhos.add(dados);
+
+        }
+        pai.put("data", filhos);
+        out.print(pai);
+    }
+
+    if (classe.equalsIgnoreCase("produto")) {
+        ArrayList<ProdutoModel> lista;
+        lista = (ArrayList<ProdutoModel>) request.getAttribute("lista-produtos");
+        int i = 1;
+        JSONObject pai = new JSONObject();
+        JsonArray filhos = new JsonArray();
+        for (ProdutoModel pm : lista) {
+            dados = new JSONObject();
+            dados.put("prodId", pm.getProdId().toString());
+            dados.put("prodCateId", pm.getProdCateId().toString());
+            dados.put("prodNome", pm.getProdNome().toString());
+            dados.put("prodCor", pm.getProdCor().toString());
+            dados.put("prodMarca", pm.getProdMarca().toString());
+            dados.put("prodPreco", pm.getProdPreco().toString());
 
             filhos.add(dados);
 

@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import daos.ProdutoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -15,6 +16,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.ProdutoModel;
+import org.json.simple.JSONObject;
 
 /**
  *
@@ -34,11 +37,33 @@ public class ServletProdutos extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-        RequestDispatcher rd = null;
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
 
-        rd = request.getRequestDispatcher("/produtos.jsp");
-        
-        rd.forward(request, response);
+            String action = request.getParameter("action");
+
+            if (action.equals("edit")) {
+                ProdutoDAO produtoDAO = new ProdutoDAO();
+                int prodId = Integer.parseInt(request.getParameter("prodId"));
+                int prodCateId = Integer.parseInt(request.getParameter("prodCateId"));
+                String prodNome = request.getParameter("prodNome");
+                String prodCor = request.getParameter("prodCor");
+                String prodMarca = request.getParameter("prodMarca");
+                Double prodPreco = Double.parseDouble(request.getParameter("prodPreco"));
+
+                ProdutoModel produtoModel = new ProdutoModel(prodId, prodCateId, prodNome, prodCor, prodMarca, prodPreco);
+                JSONObject dados = new JSONObject();
+                dados = new JSONObject();
+
+                try {
+                    produtoDAO.atualizar(produtoModel);
+                    dados.put("Resposta", "Success!");
+                    out.print(dados);
+                } catch (Exception e) {
+                    dados.put("Error", e.getMessage());
+                }
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

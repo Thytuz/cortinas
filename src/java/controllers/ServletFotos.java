@@ -5,23 +5,18 @@
  */
 package controllers;
 
-import daos.ClienteDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.ClienteModel;
-import org.json.simple.JSONObject;
 
 /**
  *
  * @author mtsth
  */
-@WebServlet(name = "ServletProdutos", urlPatterns = {"/clientes"})
-public class ServletClientes extends HttpServlet {
+public class ServletFotos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,32 +31,16 @@ public class ServletClientes extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
-            String action = request.getParameter("action");
-
-            if (action.equals("edit")) {
-                ClienteDAO clienteDAO = new ClienteDAO();
-
-                int clieId = Integer.parseInt(request.getParameter("clieId"));
-                String clieNome = request.getParameter("clieNome");
-                String clieCPF = request.getParameter("clieCPF");
-                String clieEmail = request.getParameter("clieEmail");
-                String clieTelefone = request.getParameter("clieTelefone");
-                String clieEndereço = request.getParameter("clieEndereco");
-
-                ClienteModel clienteModel = new ClienteModel(clieId, clieNome, clieCPF, clieEmail, clieTelefone, null, clieEndereço);
-                JSONObject dados = new JSONObject();
-                dados = new JSONObject();
-
-                try {
-                    clienteDAO.atualizar(clienteModel);
-                    dados.put("Resposta", "Success!");
-                    out.print(dados);
-                } catch (Exception e) {
-                    dados.put("Error", e.getMessage());
-                }
-            }
-
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ServletFotos</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ServletFotos at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

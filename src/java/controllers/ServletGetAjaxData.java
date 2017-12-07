@@ -6,6 +6,7 @@
 package controllers;
 
 import daos.ClienteDAO;
+import daos.ProdutoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.ClienteModel;
+import models.ProdutoModel;
 
 /**
  *
@@ -53,6 +55,10 @@ public class ServletGetAjaxData extends HttpServlet {
                 setViewData(getListaTodosClientes(), "lista-clientes", "cliente");
                 abreViewDestino("./data/listaJSON.jsp");
                 break;
+            case "listaprodutos":
+                setViewData(getListaTodosProdutos(), "lista-produtos", "produto");
+                abreViewDestino("./data/listaJSON.jsp");
+                break;
             default:
                 abreViewDestino("");
         }
@@ -69,6 +75,17 @@ public class ServletGetAjaxData extends HttpServlet {
         }
         return null;
 
+    }
+
+    private ArrayList getListaTodosProdutos() {
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        try {
+            ArrayList<ProdutoModel> listaProdutos = (ArrayList<ProdutoModel>) produtoDAO.listaTodos();
+            return listaProdutos;
+        } catch (Exception ex) {
+            Logger.getLogger(ServletGetAjaxData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -109,12 +126,6 @@ public class ServletGetAjaxData extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private ArrayList getClientes() {
-        ArrayList listaRetorno = new ArrayList();
-
-        return listaRetorno;
-    }
 
     private void setViewData(ArrayList lista, String nmParametro, String classe) {
         this.request.setAttribute(nmParametro, lista);

@@ -11,12 +11,20 @@
         <servlet-class>controllers.ServletProdutos</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ServletFotos</servlet-name>
+        <servlet-class>controllers.ServletFotos</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ServletClientes</servlet-name>
         <servlet-class>controllers.ServletClientes</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletProdutos</servlet-name>
         <url-pattern>/produtos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletFotos</servlet-name>
+        <url-pattern>/fotos</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServletClientes</servlet-name>

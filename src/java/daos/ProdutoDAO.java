@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package daos;
 
 import java.sql.Connection;
@@ -11,33 +6,27 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import models.ClienteModel;
+import models.ProdutoModel;
 
-/**
- *
- * @author mtsth
- */
-public class ClienteDAO implements DAO {
+public class ProdutoDAO implements DAO {
 
     @Override
     public void atualizar(Object ob) throws Exception {
         PreparedStatement ps = null;
         Connection conn = null;
         ResultSet rs = null;
-        ClienteModel clienteModel = (ClienteModel) ob;
+        ProdutoModel produtoModel = (ProdutoModel) ob;
 
         try {
             conn = ConnectionDAO.getConnection();
-            ps = conn.prepareStatement("UPDATE `clientes` "
-                    + " SET clieNome = ?, clieCPF = ?, clieTelefone = ?, clieEmail = ?, "
-                    + " clieEndereco = ?"
-                    + " WHERE clieId = ?");
-            ps.setString(1, clienteModel.getClieNome());
-            ps.setString(2, clienteModel.getClieCPF());
-            ps.setString(3, clienteModel.getClieTelefone());
-            ps.setString(4, clienteModel.getClieEmail());
-            ps.setString(5, clienteModel.getClieEndereco());
-            ps.setInt(6, clienteModel.getClieId());
+            ps = conn.prepareStatement("UPDATE `produtos` "
+                    + " SET prodNome = ?, prodCor = ?, prodMarca = ?, prodPreco = ?"
+                    + " WHERE prodId = ?");
+            ps.setString(1, produtoModel.getProdNome());
+            ps.setString(2, produtoModel.getProdCor());
+            ps.setString(3, produtoModel.getProdMarca());
+            ps.setDouble(4, produtoModel.getProdPreco());
+            ps.setInt(5, produtoModel.getProdId());
             int resp = ps.executeUpdate();
             if (resp == 0) {
                 throw new Exception("Erro");
@@ -59,15 +48,15 @@ public class ClienteDAO implements DAO {
         PreparedStatement ps = null;
         Connection conn = null;
         ResultSet rs = null;
-        List<ClienteModel> listaClientes = new ArrayList<>();
+        List<ProdutoModel> listaProdutos = new ArrayList<>();
         try {
             conn = ConnectionDAO.getConnection();
-            ps = conn.prepareStatement("SELECT * FROM `clientes`");
+            ps = conn.prepareStatement("SELECT * FROM `produtos`");
             rs = ps.executeQuery();
             while (rs.next()) {
-                listaClientes.add(new ClienteModel(rs.getInt(1),
-                        rs.getString(2), rs.getString(3),
-                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+                listaProdutos.add(new ProdutoModel(rs.getInt(1),
+                        rs.getInt(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getDouble(6)));
             }
 
         } catch (SQLException sqle) {
@@ -75,7 +64,7 @@ public class ClienteDAO implements DAO {
         } finally {
             ConnectionDAO.closeConnection(conn, ps, rs);
         }
-        return listaClientes;
+        return listaProdutos;
     }
 
     @Override

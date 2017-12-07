@@ -62,30 +62,30 @@
                         </script>
                         <div class="registration_form">
                             <!-- Form -->
-                            <form>
+                            <form action="./clientes" method="POST">
                                 <div>
                                     <label>
-                                        <input placeholder="Nome" type="text" tabindex="1">
+                                        <input name="nome" placeholder="Nome" type="text" tabindex="1">
                                     </label>
                                 </div>
                                 <div>
                                     <label>
-                                        <input placeholder="E-mail" type="email" tabindex="3">
+                                        <input name="email" placeholder="E-mail" type="email" tabindex="3">
                                     </label>
                                 </div>
                                 <div>
                                     <label>
-                                        <input placeholder="Telefone" type="email" tabindex="3">
+                                        <input name="telefone" placeholder="Telefone" type="text" tabindex="3">
                                     </label>
                                 </div>					
                                 <div>
                                     <label>
-                                        <input placeholder="Senha" type="password" tabindex="4">
+                                        <input name="password" placeholder="Senha" type="password" tabindex="4">
                                     </label>
                                 </div>						
                                 <div>
                                     <label>
-                                        <input placeholder="Confirme senha" type="password" tabindex="4">
+                                        <input name="passwordOk" placeholder="Confirme senha" type="password" tabindex="4">
                                     </label>
                                 </div>	
                                 <div class="sky-form">
@@ -96,6 +96,7 @@
                                 <div>
                                     <input type="submit" value="Criar conta" id="register-submit">
                                 </div>
+                                <input type="hidden" name="action" value="criarconta">
                             </form>
                             <!-- /Form -->
                         </div>

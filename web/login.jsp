@@ -13,31 +13,39 @@
                         <li><a href="index.html">Home</a></li>
                         <li class="active">Login</li>
                     </ol>
-                    <h2>Login</h2>
-                    <div class="col-md-6 log">			 
-                        <form>
-                            <div>
-                                <label>
-                                    <input placeholder="Nome" type="text" tabindex="1">
-                                </label>
-                            </div>
-                            <div>
-                                <label>
-                                    <input placeholder="Senha" type="password" tabindex="4">
-                                </label>
-                            </div>				
-                            <input type="submit" value="Login">	
-                            <a class="acount-btn" href="criarconta.jsp">Cria sua conta</a>
-                        </form>
-                        <a href="#">Esqueci minha senha!</a>
+                <%
+                    String mensagem = (String) request.getAttribute("mensagem");
+                    if (mensagem != null) {
+                        out.println(mensagem);
+                    }
+                %>
+                <h2>Login</h2>
+                <div class="col-md-6 log">			 
+                    <form>
+                        <div>
+                            <label>
+                                <input placeholder="Nome" type="text" tabindex="1">
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input placeholder="Senha" type="password" tabindex="4">
+                            </label>
+                        </div>				
+                        <input type="submit" value="Login">	
+                        <a class="acount-btn" href="criarconta.jsp">Cria sua conta</a>
+                    </form>
+                    <a href="#">Esqueci minha senha!</a>
 
-                    </div>	
+                </div>	
 
-                    <div class="clearfix"></div>
-                </div>
+                <div class="clearfix"></div>
             </div>
-            <!--footer-->
+        </div>
+        <!--footer-->
         <jsp:include page="templates/footer.html"></jsp:include>
         <!--end footer-->
+        <script src="js/msgjs.js"></script>
+
     </body>
 </html>

@@ -85,7 +85,27 @@ public class ClienteDAO implements DAO {
 
     @Override
     public void salvar(Object ob) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        ClienteModel clienteModel = (ClienteModel) ob;
+
+        try {
+            conn = ConnectionDAO.getConnection();
+            ps = conn.prepareStatement("INSERT INTO `clientes` (`clieNome`, `clieTelefone`, `clieEmail`, `clieSenha`) VALUES (?, ?, ?, ?) ");
+            ps.setString(1, clienteModel.getClieNome());
+            ps.setString(2, clienteModel.getClieTelefone());
+            ps.setString(3, clienteModel.getClieEmail());
+            ps.setString(4, clienteModel.getClieSenha());
+
+            ps.executeUpdate();
+
+        } catch (SQLException sqle) {
+            throw new Exception(sqle);
+        } finally {
+            ConnectionDAO.closeConnection(conn, ps, rs);
+        }
+
     }
 
 }

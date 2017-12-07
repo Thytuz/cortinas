@@ -8,6 +8,9 @@ package controllers;
 import daos.ClienteDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +23,7 @@ import org.json.simple.JSONObject;
  *
  * @author mtsth
  */
-@WebServlet(name = "ServletProdutos", urlPatterns = {"/clientes"})
+@WebServlet(name = "ServletClientes", urlPatterns = {"/clientes"})
 public class ServletClientes extends HttpServlet {
 
     /**
@@ -35,12 +38,13 @@ public class ServletClientes extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        RequestDispatcher rd = null;
         try (PrintWriter out = response.getWriter()) {
 
             String action = request.getParameter("action");
+            ClienteDAO clienteDAO = new ClienteDAO();
 
             if (action.equals("edit")) {
-                ClienteDAO clienteDAO = new ClienteDAO();
 
                 int clieId = Integer.parseInt(request.getParameter("clieId"));
                 String clieNome = request.getParameter("clieNome");
@@ -62,6 +66,31 @@ public class ServletClientes extends HttpServlet {
                 }
             }
 
+            if (action.equals("criarconta")) {
+                String nome = request.getParameter("nome");
+                String email = request.getParameter("email");
+                String telefone = request.getParameter("telefone");
+                String password = request.getParameter("password");
+
+                System.out.println(nome);
+
+                System.out.println(email);
+                System.out.println(telefone);
+                System.out.println(password);
+
+                ClienteModel clienteModel = new ClienteModel(null, nome, null, telefone, email, password, null);
+                try {
+                    clienteDAO.salvar(clienteModel);
+                    request.setAttribute("mensagem", "<div class='alert alert-success'> Conta criada com sucesso</div>");
+                    rd = request.getRequestDispatcher("/login.jsp");
+
+                } catch (Exception ex) {
+                    request.setAttribute("mensagem", "<div class='alert alert-danger'> Erro ao criar conta</div>");
+                    rd = request.getRequestDispatcher("/criarconta.jsp");
+                }
+
+                rd.forward(request, response);
+            }
         }
     }
 
@@ -75,6 +104,7 @@ public class ServletClientes extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);

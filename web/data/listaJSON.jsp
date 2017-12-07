@@ -47,7 +47,7 @@
         for (ProdutoModel pm : lista) {
             dados = new JSONObject();
             dados.put("prodId", pm.getProdId().toString());
-            dados.put("prodCateId", pm.getProdCateId().toString());
+            dados.put("cateId", pm.getCategoriaModel().getCateId().toString());
             dados.put("prodNome", pm.getProdNome().toString());
             dados.put("prodCor", pm.getProdCor().toString());
             dados.put("prodMarca", pm.getProdMarca().toString());

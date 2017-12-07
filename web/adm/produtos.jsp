@@ -73,7 +73,7 @@
                                     $.each(dados, function (i, dados) {
                                         var body = "<tr>";
                                         body += "<td>" + dados.prodId + "</td>";
-                                        body += "<td>" + dados.prodCateId + "</td>";
+                                        body += "<td>" + dados.cateId + "</td>";
                                         body += "<td>" + dados.prodNome + "</td>";
                                         body += "<td>" + dados.prodCor + "</td>";
                                         body += "<td>" + dados.prodMarca + "</td>";

@@ -1,4 +1,15 @@
+<%@page import="java.util.List"%>
+<%@page import="models.ProdutoModel"%>
+<%@page import="models.FotoModel"%>
+<%@page import="daos.FotoDAO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    FotoDAO fotoDAO = new FotoDAO();
+    ProdutoModel produtoModel = (ProdutoModel) request.getAttribute("produtoModel");
+    List<FotoModel> listaFotos = fotoDAO.buscaFotosPorIdProduto(produtoModel.getProdId());
+    request.setAttribute("listaFotos", listaFotos);
+%>
 <html>
     <!--header-->	
     <jsp:include page="templates/header.html"></jsp:include>
@@ -14,88 +25,50 @@
                             <div class="col-md-7 single-top">	
                                 <div class="flexslider">
                                     <ul class="slides">
-                                        <li data-thumb="images/si.jpg">
-                                            <div class="thumb-image"> <img src="images/si.jpg" data-imagezoom="true" class="img-responsive" alt=""/> </div>
+                                    <c:forEach items="${listaFotos}" var="foto">
+                                        <li data-thumb="<c:out value="${foto.getFotoSrc()}"/>">
+                                            <div class="thumb-image"> <img src="<c:out value="${foto.getFotoSrc()}"/>" data-imagezoom="true" class="img-responsive" alt=""/> </div>
                                         </li>
-                                        <li data-thumb="images/si2.jpg">
-                                            <div class="thumb-image"> <img src="images/si2.jpg" data-imagezoom="true" class="img-responsive" alt=""/> </div>
-                                        </li>
-                                        <li data-thumb="images/si3.jpg">
-                                            <div class="thumb-image"> <img src="images/si3.jpg" data-imagezoom="true" class="img-responsive" alt=""/> </div>
-                                        </li> 
-                                    </ul>
-                                </div>					 					 
-                                <script src="js/imagezoom.js"></script>
-                                <script defer src="js/jquery.flexslider.js"></script>
-                                <script>
-                                    // Can also be used with $(document).ready()
-                                    $(window).load(function () {
-                                        $('.flexslider').flexslider({
-                                            animation: "slide",
-                                            controlNav: "thumbnails"
-                                        });
+                                    </c:forEach>
+                                </ul>
+                            </div>					 					 
+                            <script src="js/imagezoom.js"></script>
+                            <script defer src="js/jquery.flexslider.js"></script>
+                            <script>
+                                // Can also be used with $(document).ready()
+                                $(window).load(function () {
+                                    $('.flexslider').flexslider({
+                                        animation: "slide",
+                                        controlNav: "thumbnails"
                                     });
-                                </script>
+                                });
+                            </script>
 
-                            </div>	
-                            <div class="col-md-5 single-top-in simpleCart_shelfItem">
-                                <div class="single-para ">
-                                    <h4>Lighting Wood Carved Mop Glass Double Wall Lamp </h4>							
-                                    <h5 class="item_price">$ 500.00</h5>							
-                                    <p class="para">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Vivamus porttitor tincidunt elementum nisi a, euismod rhoncus urna. Curabitur scelerisque vulputate diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat </p>
-                                    <div class="prdt-info-grid">
-                                        <ul>
-                                            <li>- Brand : Fos Lighting</li>
-                                            <li>- Dimensions : (LXBXH) in cms of...</li>
-                                            <li>- Color : Brown</li>
-                                            <li>- Material : Wood</li>
-                                        </ul>
-                                    </div>
-                                    
-                                    <a href="#" class="add-cart item_add">ADD TO CART</a>							
+                        </div>	
+                        <div class="col-md-5 single-top-in simpleCart_shelfItem">
+                            <div class="single-para ">
+                                <h4><c:out value="${produtoModel.getProdNome()}"/> </h4>							
+                                <h5 class="item_price">R$ <c:out value="${produtoModel.getProdPreco()}"/></h5>							
+                                <p class="para">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Vivamus porttitor tincidunt elementum nisi a, euismod rhoncus urna. Curabitur scelerisque vulputate diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat </p>
+                                <div class="prdt-info-grid">
+                                    <ul>
+                                        <li>- Marca : <c:out value="${produtoModel.getProdMarca()}"/></li>
+                                        <li>- Tamanho : adicionar no BD</li>
+                                        <li>- Cor : <c:out value="${produtoModel.getProdCor()}"/></li>
+                                        <li>- Material : Adicionar no BD</li>
+                                    </ul>
                                 </div>
+
+                                <a href="#" class="add-cart item_add">Adicionar ao Carrinho</a>							
                             </div>
-                            <div class="clearfix"> </div>
                         </div>
-                    </div>
-                    <div class="bottom-prdt">
-                        <div class="btm-grid-sec">
-                            <div class="col-md-2 btm-grid">
-                                <a href="product.html">
-                                    <img src="images/p3.jpg" alt=""/>
-                                    <h4>Product#1</h4>
-                                    <span>$1200</span></a>
-                            </div>
-                            <div class="col-md-2 btm-grid">
-                                <a href="product.html">
-                                    <img src="images/p10.jpg" alt=""/>
-                                    <h4>Product#1</h4>
-                                    <span>$700</span></a>
-                            </div>
-                            <div class="col-md-2 btm-grid">
-                                <a href="product.html">
-                                    <img src="images/p5.jpg" alt=""/>
-                                    <h4>Product#1</h4>
-                                    <span>$1300</span></a>
-                            </div>
-                            <div class="col-md-2 btm-grid">
-                                <a href="product.html">
-                                    <img src="images/p4.jpg" alt=""/>
-                                    <h4>Product#1</h4>
-                                    <span>$9000</span></a>
-                            </div>
-                            <div class="col-md-2 btm-grid">
-                                <a href="product.html">
-                                    <img src="images/p2.jpg" alt=""/>
-                                    <h4>Product#1</h4>
-                                    <span>$450</span></a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>			
+                        <div class="clearfix"> </div>
                     </div>
                 </div>
+
             </div>
-            <!--footer-->
+        </div>
+        <!--footer-->
         <jsp:include page="templates/footer.html"></jsp:include>
         <!--end footer-->
     </body>

@@ -1,4 +1,24 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="models.FotoModel"%>
+<%@page import="daos.FotoDAO"%>
+<%@page import="models.CategoriaModel"%>
+<%@page import="daos.CategoriaDAO"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="daos.ProdutoDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="models.ProdutoModel"%>
+<%
+    ProdutoDAO produtoDAO = new ProdutoDAO();
+    CategoriaDAO categoriaDAO = new CategoriaDAO();
+    FotoDAO fotoDAO = new FotoDAO();
+
+    List<ProdutoModel> listaProdutos = produtoDAO.listaTodos();
+    List<CategoriaModel> listaCategorias = categoriaDAO.listaTodos();
+    List<FotoModel> listaFotos = fotoDAO.listaTodos();
+
+    request.setAttribute("listaProdutos", listaProdutos);
+    request.setAttribute("listaCategorias", listaCategorias);
+    request.setAttribute("listaFotos", listaFotos);
+%>
 <html>
     <!--header-->	
     <jsp:include page="templates/header.html"></jsp:include>
@@ -12,496 +32,135 @@
                         <li><a href="index.jsp">Home</a></li>
                         <li class="active">Produtos</li>
                     </ol>
-                    <h2>Nossos Produtos</h2>			
+                    <h2>Nossos Produtos</h2>
+
                     <div class="col-md-9 product-model-sec">
-                        <a href="detalheproduto.jsp"><div class="product-grid">
-                                <div class="more-product"><span> </span></div>						
-                                <div class="product-img b-link-stripe b-animate-go  thickbox">
-                                    <img src="images/p1.jpg" class="img-responsive" alt="">
-                                    <div class="b-wrapper">
-                                        <h4 class="b-animate b-from-left  b-delay03">							
-                                            <button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Quick View</button>
-                                        </h4>
-                                    </div>
-                                </div></a>						
-                        <div class="product-info simpleCart_shelfItem">
-                            <div class="product-info-cust prt_name">
-                                <h4>Lights #1</h4>								
-                                <span class="item_price">$187.95</span>
-                                <div class="ofr">
-                                    <p class="pric1"><del>R$ 280</del></p>
-                                    <p class="disc">[12% mais barato]</p>
-                                </div>
-                                <input type="text" class="item_quantity" value="1" />
-                                <input type="button" class="item_add items" value="ADD">
-                                <div class="clearfix"> </div>
-                            </div>												
-
-                        </div>
-                    </div>	
-
-                    <a href="detalheproduto.jsp"><div class="product-grid">
-                            <div class="more-product"><span> </span></div>						
-                            <div class="product-img b-link-stripe b-animate-go  thickbox">
-                                <img src="images/p2.jpg" class="img-responsive" alt=""/>
-                                <div class="b-wrapper">
-                                    <h4 class="b-animate b-from-left  b-delay03">							
-                                        <button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Quick View</button>
-                                    </h4>
-                                </div>
-                            </div></a>					
-                    <div class="product-info simpleCart_shelfItem">
-                        <div class="product-info-cust prt_name">
-                            <h4>Lights #1</h4>								
-                            <span class="item_price">$187.95</span>	
-                            <div class="ofr">
-                                <p class="pric1"><del>R$ 280</del></p>
-                                <p class="disc">[12% mais barato]</p>
+                    <c:forEach items="${listaProdutos}" var="produto">
+                        <form action="./produtos" method="POST">
+                            <input name="action" type="hidden" value="detalhar">
+                            <input name="prodId" type="hidden" value="<c:out value="${produto.getProdId()}"/>">
+                            <a href="detalheproduto.jsp"><div class="product-grid">
+                                    <div class="more-product"><span> </span></div>						
+                                    <div class="product-img b-link-stripe b-animate-go  thickbox">
+                                        <c:forEach items="${listaFotos}" var="foto">
+                                            <c:if test="${foto.getProdutoModel().getProdId() == produto.getProdId()}">
+                                                <img src="<c:out value="${foto.getFotoSrc()}"/>" class="img-responsive" alt="">
+                                            </c:if>
+                                        </c:forEach>
+                                        <div class="b-wrapper">
+                                            <h4 class="b-animate b-from-left  b-delay03">							
+                                                <button type="submit"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Ver</button>
+                                            </h4>
+                                        </div>
+                                    </div></a>						
+                            <div class="product-info simpleCart_shelfItem">
+                                <div class="product-info-cust prt_name">
+                                    <h4><c:out value="${produto.getProdNome()}"/></h4>								
+                                    <span class="item_price">R$<c:out value="${produto.getProdPreco()}"/></span>
+                                    <input type="text" class="item_quantity" value="1" />
+                                    <input type="button" class="item_add items" value="ADD">
+                                    <div class="clearfix"> </div>
+                                </div>												
                             </div>
-                            <input type="text" class="item_quantity" value="1" />
-                            <input type="button" class="item_add items" value="ADD">
-                            <div class="clearfix"> </div>
-                        </div>						
                     </div>
-                </div>
-
-                <a href="detalheproduto.jsp"><div class="product-grid">
-                        <div class="more-product"><span> </span></div>						
-                        <div class="product-img b-link-stripe b-animate-go  thickbox">
-                            <img src="images/p3.jpg" class="img-responsive" alt=""/>
-                            <div class="b-wrapper">
-                                <h4 class="b-animate b-from-left  b-delay03">							
-                                    <button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Quick View</button>
-                                </h4>
-                            </div>
-                        </div>	</a>					
-                <div class="product-info simpleCart_shelfItem">
-                    <div class="product-info-cust prt_name">
-                        <h4>Lights #1</h4>								
-                        <span class="item_price">$187.95</span>	
-                        <div class="ofr">
-                            <p class="pric1"><del>R$ 280</del></p>
-                            <p class="disc">[12% mais barato]</p>
-                        </div>
-                        <input type="text" class="item_quantity" value="1" />
-                        <input type="button" class="item_add items" value="ADD">
-                        <div class="clearfix"> </div>
-                    </div>						
-                </div>
+                    </form>
+                </c:forEach>
             </div>
 
-            <a href="detalheproduto.jsp"><div class="product-grid">
-                    <div class="more-product"><span> </span></div>						
-                    <div class="product-img b-link-stripe b-animate-go  thickbox">
-                        <img src="images/p4.jpg" class="img-responsive" alt=""/>
-                        <div class="b-wrapper">
-                            <h4 class="b-animate b-from-left  b-delay03">							
-                                <button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Quick View</button>
-                            </h4>
-                        </div>
-                    </div></a>						
-            <div class="product-info simpleCart_shelfItem">
-                <div class="product-info-cust prt_name">
-                    <h4>Lights #1</h4>								
-                    <span class="item_price">$187.95</span>	
-                    <div class="ofr">
-                        <p class="pric1"><del>R$ 280</del></p>
-                        <p class="disc">[12% mais barato]</p>
-                    </div>
-                    <input type="text" class="item_quantity" value="1" />
-                    <input type="button" class="item_add items" value="ADD">
-                    <div class="clearfix"> </div>
-                </div>						
-            </div>
-        </div>
+            <div class="rsidebar span_1_of_left">
+                <section  class="sky-form">
+                    <div class="product_right">
+                        <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Categorias</h4>
+                        <c:forEach items="${listaCategorias}" var="categoria">
+                            <div class="tab1">
+                                <ul class="place">								
+                                    <li class="sort"><c:out value="${categoria.getCateNome()}"/></li>
+                                    <div class="clearfix"> </div>
+                                </ul>
+                            </div>						  
+                        </c:forEach>
+                        <!--script-->
+                        <script>
+                            $(document).ready(function () {
+                                $(".tab1 .single-bottom").hide();
+                                $(".tab2 .single-bottom").hide();
+                                $(".tab3 .single-bottom").hide();
+                                $(".tab4 .single-bottom").hide();
+                                $(".tab5 .single-bottom").hide();
 
-        <a href="detalheproduto.jsp"><div class="product-grid">
-                <div class="more-product"><span> </span></div>						
-                <div class="product-img b-link-stripe b-animate-go  thickbox">
-                    <img src="images/p5.jpg" class="img-responsive" alt=""/>
-                    <div class="b-wrapper">
-                        <h4 class="b-animate b-from-left  b-delay03">							
-                            <button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Quick View</button>
-                        </h4>
-                    </div>
-                </div></a>						
-        <div class="product-info simpleCart_shelfItem">
-            <div class="product-info-cust prt_name">
-                <h4>Lights #1</h4>								
-                <span class="item_price">$187.95</span>	
-                <div class="ofr">
-                    <p class="pric1"><del>R$ 280</del></p>
-                    <p class="disc">[12% mais barato]</p>
-                </div>
-                <input type="text" class="item_quantity" value="1" />
-                <input type="button" class="item_add items" value="ADD">
-                <div class="clearfix"> </div>
-            </div>						
+                                $(".tab1 ul").click(function () {
+                                    $(".tab1 .single-bottom").slideToggle(300);
+                                    $(".tab2 .single-bottom").hide();
+                                    $(".tab3 .single-bottom").hide();
+                                    $(".tab4 .single-bottom").hide();
+                                    $(".tab5 .single-bottom").hide();
+                                })
+                                $(".tab2 ul").click(function () {
+                                    $(".tab2 .single-bottom").slideToggle(300);
+                                    $(".tab1 .single-bottom").hide();
+                                    $(".tab3 .single-bottom").hide();
+                                    $(".tab4 .single-bottom").hide();
+                                    $(".tab5 .single-bottom").hide();
+                                })
+                                $(".tab3 ul").click(function () {
+                                    $(".tab3 .single-bottom").slideToggle(300);
+                                    $(".tab4 .single-bottom").hide();
+                                    $(".tab5 .single-bottom").hide();
+                                    $(".tab2 .single-bottom").hide();
+                                    $(".tab1 .single-bottom").hide();
+                                })
+                                $(".tab4 ul").click(function () {
+                                    $(".tab4 .single-bottom").slideToggle(300);
+                                    $(".tab5 .single-bottom").hide();
+                                    $(".tab3 .single-bottom").hide();
+                                    $(".tab2 .single-bottom").hide();
+                                    $(".tab1 .single-bottom").hide();
+                                })
+                                $(".tab5 ul").click(function () {
+                                    $(".tab5 .single-bottom").slideToggle(300);
+                                    $(".tab4 .single-bottom").hide();
+                                    $(".tab3 .single-bottom").hide();
+                                    $(".tab2 .single-bottom").hide();
+                                    $(".tab1 .single-bottom").hide();
+                                })
+                            });
+                        </script>
+                        <!-- script -->					 
+                </section>
+
+                <section  class="sky-form">
+                    <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Preço</h4>
+                    <ul class="dropdown-menu1">
+                        <li>							               
+                            <div id="slider-range"></div>							
+                            <input disabled type="text" id="amount" style="border: 0; background: none; font-weight: NORMAL;   font-family: 'Dosis-Regular';" />
+                        </li>			
+                    </ul>
+                </section>
+                <!---->
+                <script type='text/javascript'>//<![CDATA[ 
+                    $(window).load(function () {
+                        $("#slider-range").slider({
+                            range: true,
+                            min: 0,
+                            max: 100000,
+                            values: [500, 100000],
+                            slide: function (event, ui) {
+                                $("#amount").val("$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ]);
+                            }
+                        });
+                        $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+
+                    });//]]> 
+                </script>
+                <!---->
+
+            </div>				 
         </div>
     </div>
 
-    <a href="detalheproduto.jsp"><div class="product-grid">
-            <div class="more-product"><span> </span></div>						
-            <div class="product-img b-link-stripe b-animate-go  thickbox">
-                <img src="images/p6.jpg" class="img-responsive" alt=""/>
-                <div class="b-wrapper">
-                    <h4 class="b-animate b-from-left  b-delay03">							
-                        <button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Quick View</button>
-                    </h4>
-                </div>
-            </div></a>						
-    <div class="product-info simpleCart_shelfItem">
-        <div class="product-info-cust prt_name">
-            <h4>Lights #1</h4>								
-            <span class="item_price">$187.95</span>	
-            <div class="ofr">
-                <p class="pric1"><del>R$ 280</del></p>
-                <p class="disc">[12% mais barato]</p>
-            </div>
-            <input type="text" class="item_quantity" value="1" />
-            <input type="button" class="item_add items" value="ADD">
-            <div class="clearfix"> </div>
-        </div>						
-    </div>
-</div>
-<a href="detalheproduto.jsp"><div class="product-grid">
-        <div class="more-product"><span> </span></div>						
-        <div class="product-img b-link-stripe b-animate-go  thickbox">
-            <img src="images/p7.jpg" class="img-responsive" alt=""/>
-            <div class="b-wrapper">
-                <h4 class="b-animate b-from-left  b-delay03">							
-                    <button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Quick View</button>
-                </h4>
-            </div>
-        </div></a>						
-<div class="product-info simpleCart_shelfItem">
-    <div class="product-info-cust prt_name">
-        <h4>Lights #1</h4>								
-        <span class="item_price">$187.95</span>	
-        <div class="ofr">
-            <p class="pric1"><del>R$ 280</del></p>
-            <p class="disc">[12% mais barato]</p>
-        </div>
-        <input type="text" class="item_quantity" value="1" />
-        <input type="button" class="item_add items" value="ADD">
-        <div class="clearfix"> </div>
-    </div>						
-</div>
-</div>
-<a href="detalheproduto.jsp"><div class="product-grid">
-        <div class="more-product"><span> </span></div>						
-        <div class="product-img b-link-stripe b-animate-go  thickbox">
-            <img src="images/p8.jpg" class="img-responsive" alt=""/>
-            <div class="b-wrapper">
-                <h4 class="b-animate b-from-left  b-delay03">							
-                    <button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Quick View</button>
-                </h4>
-            </div>
-        </div></a>						
-<div class="product-info simpleCart_shelfItem">
-    <div class="product-info-cust prt_name">
-        <h4>Lights #1</h4>								
-        <span class="item_price">$187.95</span>	
-        <div class="ofr">
-            <p class="pric1"><del>R$ 280</del></p>
-            <p class="disc">[12% mais barato]</p>
-        </div>
-        <input type="text" class="item_quantity" value="1" />
-        <input type="button" class="item_add items" value="ADD">
-        <div class="clearfix"> </div>
-    </div>						
-</div>
-</div>
-<a href="detalheproduto.jsp"><div class="product-grid">
-        <div class="more-product"><span> </span></div>						
-        <div class="product-img b-link-stripe b-animate-go  thickbox">
-            <img src="images/p9.jpg" class="img-responsive" alt=""/>
-            <div class="b-wrapper">
-                <h4 class="b-animate b-from-left  b-delay03">							
-                    <button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Quick View</button>
-                </h4>
-            </div>
-        </div></a>						
-<div class="product-info simpleCart_shelfItem">
-    <div class="product-info-cust prt_name">
-        <h4>Lights #1</h4>								
-        <span class="item_price">$187.95</span>	
-        <div class="ofr">
-            <p class="pric1"><del>R$ 280</del></p>
-            <p class="disc">[12% mais barato]</p>
-        </div>
-        <input type="text" class="item_quantity" value="1" />
-        <input type="button" class="item_add items" value="ADD">
-        <div class="clearfix"> </div>
-    </div>						
-</div>
-</div>
-<!---728x90--->
-<a href="detalheproduto.jsp"><div class="product-grid">
-        <div class="more-product"><span> </span></div>						
-        <div class="product-img b-link-stripe b-animate-go  thickbox">
-            <img src="images/p10.jpg" class="img-responsive" alt=""/>
-            <div class="b-wrapper">
-                <h4 class="b-animate b-from-left  b-delay03">							
-                    <button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Quick View</button>
-                </h4>
-            </div>
-        </div></a>						
-<div class="product-info simpleCart_shelfItem">
-    <div class="product-info-cust prt_name">
-        <h4>Lights #1</h4>								
-        <span class="item_price">$187.95</span>	
-        <div class="ofr">
-            <p class="pric1"><del>R$ 280</del></p>
-            <p class="disc">[12% mais barato]</p>
-        </div>
-        <input type="text" class="item_quantity" value="1" />
-        <input type="button" class="item_add items" value="ADD">
-        <div class="clearfix"> </div>
-    </div>						
-</div>
-</div>
-<a href="detalheproduto.jsp"><div class="product-grid">
-        <div class="more-product"><span> </span></div>						
-        <div class="product-img b-link-stripe b-animate-go  thickbox">
-            <img src="images/p11.jpg" class="img-responsive" alt=""/>
-            <div class="b-wrapper">
-                <h4 class="b-animate b-from-left  b-delay03">							
-                    <button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Quick View</button>
-                </h4>
-            </div>
-        </div></a>						
-<div class="product-info simpleCart_shelfItem">
-    <div class="product-info-cust prt_name">
-        <h4>Lights #1</h4>								
-        <span class="item_price">$187.95</span>	
-        <div class="ofr">
-            <p class="pric1"><del>R$ 280</del></p>
-            <p class="disc">[12% mais barato]</p>
-        </div>
-        <input type="text" class="item_quantity" value="1" />
-        <input type="button" class="item_add items" value="ADD">
-        <div class="clearfix"> </div>
-    </div>
-</div>
-</div>
-<a href="detalheproduto.jsp"><div class="product-grid">
-        <div class="more-product"><span> </span></div>						
-        <div class="product-img b-link-stripe b-animate-go  thickbox">
-            <img src="images/p12.jpg" class="img-responsive" alt=""/>
-            <div class="b-wrapper">
-                <h4 class="b-animate b-from-left  b-delay03">							
-                    <button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Quick View</button>
-                </h4>
-            </div>
-        </div></a>						
-<div class="product-info simpleCart_shelfItem">
-    <div class="product-info-cust prt_name">
-        <h4>Lights #1</h4>								
-        <span class="item_price">$187.95</span>	
-        <div class="ofr">
-            <p class="pric1"><del>R$ 280</del></p>
-            <p class="disc">[12% mais barato]</p>
-        </div>
-        <input type="text" class="item_quantity" value="1" />
-        <input type="button" class="item_add items" value="ADD">
-        <div class="clearfix"> </div>
-    </div>
-</div>
-</div>
-</div>
-<div class="rsidebar span_1_of_left">
-    <section  class="sky-form">
-        <div class="product_right">
-            <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Categorias</h4>
-            <div class="tab1">
-                <ul class="place">								
-                    <li class="sort">Home Decorates</li>
-                    <li class="by"><img src="images/do.png" alt=""></li>
-                    <div class="clearfix"> </div>
-                </ul>
-                <div class="single-bottom">						
-                    <a href="#"><p>Lanterns</p></a>
-                    <a href="#"><p>Wall Lamps</p></a>
-                    <a href="#"><p>Table Lamps</p></a>
-                    <a href="#"><p>Selling Lamps</p></a>
-                </div>
-            </div>						  
-            <div class="tab2">
-                <ul class="place">								
-                    <li class="sort">Festive Needs</li>
-                    <li class="by"><img src="images/do.png" alt=""></li>
-                    <div class="clearfix"> </div>
-                </ul>
-                <div class="single-bottom">						
-                    <a href="#"><p>Lanterns</p></a>
-                    <a href="#"><p>Disco Lights</p></a>									
-                </div>
-            </div>
-            <div class="tab3">
-                <ul class="place">								
-                    <li class="sort">Kitchen & Dining</li>
-                    <li class="by"><img src="images/do.png" alt=""></li>
-                    <div class="clearfix"> </div>
-                </ul>
-                <div class="single-bottom">						
-                    <a href="#"><p>Lights & Lamps</p></a>
-                </div>
-            </div>
-            <div class="tab4">
-                <ul class="place">								
-                    <li class="sort">Books</li>
-                    <li class="by"><img src="images/do.png" alt=""></li>
-                    <div class="clearfix"> </div>
-                </ul>
-                <div class="single-bottom">						
-                    <a href="#"><p>Standing Lamps</p></a>
-                    <a href="#"><p>Lamps</p></a>
-                    <a href="#"><p>Led Lamps</p></a>
-                </div>
-            </div>
-            <div class="tab5">
-                <ul class="place">								
-                    <li class="sort">Automotive</li>
-                    <li class="by"><img src="images/do.png" alt=""></li>
-                    <div class="clearfix"> </div>
-                </ul>
-                <div class="single-bottom">						
-                    <a href="#"><p>Car Lights</p></a>
-                    <a href="#"><p>Stick Lights</p></a>
-                    <a href="#"><p>Thread Lights</p></a>
-                </div>
-            </div>
-
-            <!--script-->
-            <script>
-                $(document).ready(function () {
-                    $(".tab1 .single-bottom").hide();
-                    $(".tab2 .single-bottom").hide();
-                    $(".tab3 .single-bottom").hide();
-                    $(".tab4 .single-bottom").hide();
-                    $(".tab5 .single-bottom").hide();
-
-                    $(".tab1 ul").click(function () {
-                        $(".tab1 .single-bottom").slideToggle(300);
-                        $(".tab2 .single-bottom").hide();
-                        $(".tab3 .single-bottom").hide();
-                        $(".tab4 .single-bottom").hide();
-                        $(".tab5 .single-bottom").hide();
-                    })
-                    $(".tab2 ul").click(function () {
-                        $(".tab2 .single-bottom").slideToggle(300);
-                        $(".tab1 .single-bottom").hide();
-                        $(".tab3 .single-bottom").hide();
-                        $(".tab4 .single-bottom").hide();
-                        $(".tab5 .single-bottom").hide();
-                    })
-                    $(".tab3 ul").click(function () {
-                        $(".tab3 .single-bottom").slideToggle(300);
-                        $(".tab4 .single-bottom").hide();
-                        $(".tab5 .single-bottom").hide();
-                        $(".tab2 .single-bottom").hide();
-                        $(".tab1 .single-bottom").hide();
-                    })
-                    $(".tab4 ul").click(function () {
-                        $(".tab4 .single-bottom").slideToggle(300);
-                        $(".tab5 .single-bottom").hide();
-                        $(".tab3 .single-bottom").hide();
-                        $(".tab2 .single-bottom").hide();
-                        $(".tab1 .single-bottom").hide();
-                    })
-                    $(".tab5 ul").click(function () {
-                        $(".tab5 .single-bottom").slideToggle(300);
-                        $(".tab4 .single-bottom").hide();
-                        $(".tab3 .single-bottom").hide();
-                        $(".tab2 .single-bottom").hide();
-                        $(".tab1 .single-bottom").hide();
-                    })
-                });
-            </script>
-            <!-- script -->					 
-    </section>
-
-    <section  class="sky-form">
-        <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Descontos</h4>
-        <div class="row row1 scroll-pane">
-            <div class="col col-4">
-                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Descontos de - 10% (20)</label>
-            </div>
-            <div class="col col-4">
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>40% - 50% (5)</label>
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>30% - 20% (7)</label>
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>10% - 5% (2)</label>
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Other(50)</label>
-            </div>
-        </div>
-    </section>  				 
-
-    <section  class="sky-form">
-        <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Preço</h4>
-        <ul class="dropdown-menu1">
-            <li>							               
-                <div id="slider-range"></div>							
-                <input disabled type="text" id="amount" style="border: 0; background: none; font-weight: NORMAL;   font-family: 'Dosis-Regular';" />
-            </li>			
-        </ul>
-    </section>
-    <!---->
-    <script type='text/javascript'>//<![CDATA[ 
-        $(window).load(function () {
-            $("#slider-range").slider({
-                range: true,
-                min: 0,
-                max: 100000,
-                values: [500, 100000],
-                slide: function (event, ui) {
-                    $("#amount").val("$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ]);
-                }
-            });
-            $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
-
-        });//]]> 
-    </script>
-    <!---->
-
-
-    <section  class="sky-form">
-        <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Tipo</h4>
-        <div class="row row1 scroll-pane">
-            <div class="col col-4">
-                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Lights (30)</label>
-            </div>
-            <div class="col col-4">
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Diwali Lights   (30)</label>
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Tube Lights      (30)</label>
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>LED Lights        (30)</label>
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Bulbs  (30)</label>
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Ceiling Lights  (30)</label>
-            </div>
-        </div>
-    </section>
-    <section  class="sky-form">
-        <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Marca</h4>
-        <div class="row row1 scroll-pane">
-            <div class="col col-4">
-                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Everyday</label>
-            </div>
-            <div class="col col-4">
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Anchor</label>
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Philips</label>
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Wipro</label>
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Havells</label>
-                <label class="checkbox"><input type="checkbox" name="checkbox" ><i></i>Ferolex</label>
-                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Gold Medal</label>
-            </div>
-        </div>
-    </section>				   
-</div>				 
-</div>
-</div>
-
-<!--footer-->
-<jsp:include page="templates/footer.html"></jsp:include>
-<!--end footer-->
+    <!--footer-->
+    <jsp:include page="templates/footer.html"></jsp:include>
+    <!--end footer-->
 </body>
 </html>

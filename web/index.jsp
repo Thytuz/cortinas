@@ -1,4 +1,24 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="models.FotoModel"%>
+<%@page import="daos.FotoDAO"%>
+<%@page import="models.CategoriaModel"%>
+<%@page import="daos.CategoriaDAO"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page import="daos.ProdutoDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="models.ProdutoModel"%>
+<%
+    ProdutoDAO produtoDAO = new ProdutoDAO();
+    CategoriaDAO categoriaDAO = new CategoriaDAO();
+    FotoDAO fotoDAO = new FotoDAO();
+
+    List<ProdutoModel> listaProdutos = produtoDAO.listaTodos();
+    List<CategoriaModel> listaCategorias = categoriaDAO.listaTodos();
+    List<FotoModel> listaFotos = fotoDAO.listaTodos();
+
+    request.setAttribute("listaProdutos", listaProdutos);
+    request.setAttribute("listaCategorias", listaCategorias);
+    request.setAttribute("listaFotos", listaFotos);
+%>
 <!DOCTYPE html>
 <html>
     <!--header-->	
@@ -54,182 +74,65 @@
             <!---->
             <script src="bootstrap/js/bootstrap.js"></script>
             <div class="items">
-                <!---728x90--->
-                <div class="container">
-                    <div class="items-sec">
-                        <div class="col-md-3 feature-grid">
-                            <a href="detalheproduto.jsp"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/_89392793_037e_600x600.jpg" alt=""/>	
-                                <div class="arrival-info">
-                                    <h4>Item #1</h4>
-                                    <p>Rs 12000</p>
-                                    <span class="pric1"><del>Rs 18000</del></span>
-                                    <span class="disc">[12%]</span>
-                                </div>
-                                <div class="viw">
-                                    <a href="detalheproduto.jsp"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3 feature-grid">
-                            <a href="detalheproduto.jsp"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/abracadeira_franjas_chocolate_89360145_d0e0_600x600.jpg" alt=""/>	
-                                <div class="arrival-info">
-                                    <h4>Item #1</h4>
-                                    <p>Rs 10000</p>
-                                    <span class="pric1"><del>Rs 14000</del></span>
-                                    <span class="disc">[14%]</span>
-                                </div>
-                                <div class="viw">
-                                    <a href="detalheproduto.jsp"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3 feature-grid">
-                            <a href="detalheproduto.jsp"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/_89392793_037e_600x600.jpg" alt=""/>	
-                                <div class="arrival-info">
-                                    <h4>Item #1</h4>
-                                    <p>Rs 8500</p>
-                                    <span class="pric1"><del>Rs 9500</del></span>
-                                    <span class="disc">[10%]</span>
-                                </div>
-                                <div class="viw">
-                                    <a href="detalheproduto.jsp"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3 feature-grid">
-                            <a href="detalheproduto.jsp"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/abracadeira_franjas_chocolate_89360145_d0e0_600x600.jpg" alt=""/>	
-                                <div class="arrival-info">
-                                    <h4>Item #1</h4>
-                                    <p>Rs 12000</p>
-                                    <span class="pric1"><del>Rs 18000</del></span>
-                                    <span class="disc">[12%]</span>
-                                </div>
-                                <div class="viw">
-                                    <a href="detalheproduto.jsp"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="items-sec btm-sec">
-                        <div class="col-md-3 feature-grid">
-                            <a href="detalheproduto.jsp"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/_89389860_4e08_600x600.jpg" alt=""/>	
-                                <div class="arrival-info">
-                                    <h4>Item #1</h4>
-                                    <p>Rs 500</p>
-                                    <span class="pric1"><del>Rs 650</del></span>
-                                    <span class="disc">[8%]</span>
-                                </div>
-                                <div class="viw">
-                                    <a href="detalheproduto.jsp"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3 feature-grid">
-                            <a href="detalheproduto.jsp"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/abracadeira_franjas_chocolate_89360145_d0e0_600x600.jpg" alt=""/>	
-                                <div class="arrival-info">
-                                    <h4>Item #1</h4>
-                                    <p>Rs 400</p>
-                                    <span class="pric1"><del>Rs 750</del></span>
-                                    <span class="disc">[12%]</span>
-                                </div>
-                                <div class="viw">
-                                    <a href="detalheproduto.jsp"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3 feature-grid">
-                            <a href="detalheproduto.jsp"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/_89389860_4e08_600x600.jpg" alt=""/>	
-                                <div class="arrival-info">
-                                    <h4>Item #1</h4>
-                                    <p>Rs 800</p>
-                                    <span class="pric1"><del>Rs 1200</del></span>
-                                    <span class="disc">[12%]</span>
-                                </div>
-                                <div class="viw">
-                                    <a href="detalheproduto.jsp"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3 feature-grid">
-                            <a href="detalheproduto.jsp"><img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/abracadeira_franjas_chocolate_89360145_d0e0_600x600.jpg" alt=""/>	
-                                <div class="arrival-info">
-                                    <h4>Item #1</h4>
-                                    <p>Rs 600</p>
-                                    <span class="pric1"><del>Rs 1200</del></span>
-                                    <span class="disc">[50%]</span>
-                                </div>
-                                <div class="viw">
-                                    <a href="detalheproduto.jsp"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>View</a>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
+                <div class="product-model">
+                    <h2>Nossos Produtos</h2>
+                    <div class="container">
+                        <div class="product-model-sec">
+                        <c:forEach items="${listaProdutos}" var="produto">
+                            <a href="detalheproduto.jsp"><div class="product-grid">
+                                    <div class="more-product"><span> </span></div>						
+                                    <div class="product-img b-link-stripe b-animate-go  thickbox">
+                                        <c:forEach items="${listaFotos}" var="foto">
+                                            <c:if test="${foto.getProdutoModel().getProdId() == produto.getProdId()}">
+                                                <img src="<c:out value="${foto.getFotoSrc()}"/>" class="img-responsive" alt="">
+                                            </c:if>
+                                        </c:forEach>
+                                        <div class="b-wrapper">
+                                            <h4 class="b-animate b-from-left  b-delay03">							
+                                                <button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Ver</button>
+                                            </h4>
+                                        </div>
+                                    </div></a>						
+                            <div class="product-info simpleCart_shelfItem">
+                                <div class="product-info-cust prt_name">
+                                    <h4><c:out value="${produto.getProdNome()}"/></h4>								
+                                    <span class="item_price">R$<c:out value="${produto.getProdPreco()}"/></span>
+                                    <input type="text" class="item_quantity" value="1" />
+                                    <input type="button" class="item_add items" value="ADD">
+                                    <div class="clearfix"> </div>
+                                </div>												
+                            </div>
+                        </div>	
+                    </c:forEach>
                 </div>
-                <!---728x90--->
             </div>
             <!---->
-            <div class="offers">
-                <div class="container">
-                    <h3>Maiores descontos</h3>
-                    <!---728x90--->
-                    <div class="offer-grids">
-                        <div class="col-md-6 grid-left">
-                            <a href="#"><div class="offer-grid1">
-                                    <div class="ofr-pic">
-                                        <img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/abracadeira_franjas_chocolate_89360145_d0e0_600x600.jpg" class="img-responsive" alt=""/>
-                                    </div>
-                                    <div class="ofr-pic-info">
-                                        <h4>Emergency Lights <br>& Led Bulds</h4>
-                                        <span>UP TO 60% OFF</span>
-                                        <p>Shop Now</p>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div></a>
-                        </div>
-                        <div class="col-md-6 grid-left">
-                            <a href="#"><div class="offer-grid1">
-                                    <div class="ofr-pic">
-                                        <img src="https://s3-sa-east-1.amazonaws.com/leroy-production//uploads/img/products/_89392793_037e_600x600.jpg" class="img-responsive" alt=""/>
-                                    </div>
-                                    <div class="ofr-pic-info">
-                                        <h4>Emergency Lights <br>& Led Bulds</h4>
-                                        <span>UP TO 60% OFF</span>
-                                        <p>Shop Now</p>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div></a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
-        <jsp:include page="templates/subscribe.html"></jsp:include>
-            <div class="footer">
-                <div class="container">
-                    <div class="footer-grids">
-                        <div class="col-md-3 about-us">
-                            <h3>Sobre nós</h3>
-                            <p>Maecenas nec auctor sem. Vivamus porttitor tincidunt elementum nisi a, euismod rhoncus urna. Curabitur scelerisque vulputate arcu eu pulvinar. Fusce vel neque diam</p>
-                        </div>
-                        <div class="col-md-3 ftr-grid">
-                            <h3>Informações</h3>
-                            <ul class="nav-bottom">
-                                <li><a href="#">Track Order</a></li>
-                                <li><a href="#">New Products</a></li>
-                                <li><a href="#">Location</a></li>
-                                <li><a href="#">Our Stores</a></li>
-                                <li><a href="#">Best Sellers</a></li>	
-                            </ul>					
-                        </div>
 
-                        <div class="clearfix"></div>
+            <jsp:include page="templates/subscribe.html"></jsp:include>
+                <div class="footer">
+                    <div class="container">
+                        <div class="footer-grids">
+                            <div class="col-md-3 about-us">
+                                <h3>Sobre nós</h3>
+                                <p>Maecenas nec auctor sem. Vivamus porttitor tincidunt elementum nisi a, euismod rhoncus urna. Curabitur scelerisque vulputate arcu eu pulvinar. Fusce vel neque diam</p>
+                            </div>
+                            <div class="col-md-3 ftr-grid">
+                                <h3>Informações</h3>
+                                <ul class="nav-bottom">
+                                    <li><a href="#">Track Order</a></li>
+                                    <li><a href="#">New Products</a></li>
+                                    <li><a href="#">Location</a></li>
+                                    <li><a href="#">Our Stores</a></li>
+                                    <li><a href="#">Best Sellers</a></li>	
+                                </ul>					
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!--footer-->
-        <jsp:include page="templates/footer.html"></jsp:include>
-        <!--end footer-->
+                <!--footer-->
+            <jsp:include page="templates/footer.html"></jsp:include>
+            <!--end footer-->
     </body>
 </html>

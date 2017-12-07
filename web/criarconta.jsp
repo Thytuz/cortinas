@@ -65,12 +65,12 @@
                             <form action="./clientes" method="POST">
                                 <div>
                                     <label>
-                                        <input name="nome" placeholder="Nome" type="text" tabindex="1">
+                                        <input required name="nome" placeholder="Nome" type="text" tabindex="1">
                                     </label>
                                 </div>
                                 <div>
                                     <label>
-                                        <input name="email" placeholder="E-mail" type="email" tabindex="3">
+                                        <input required name="email" placeholder="E-mail" type="email" tabindex="3">
                                     </label>
                                 </div>
                                 <div>
@@ -80,12 +80,12 @@
                                 </div>					
                                 <div>
                                     <label>
-                                        <input name="password" placeholder="Senha" type="password" tabindex="4">
+                                        <input required name="password" placeholder="Senha" type="password" tabindex="4">
                                     </label>
                                 </div>						
                                 <div>
                                     <label>
-                                        <input name="passwordOk" placeholder="Confirme senha" type="password" tabindex="4">
+                                        <input required name="passwordOk" placeholder="Confirme senha" type="password" tabindex="4">
                                     </label>
                                 </div>	
                                 <div class="sky-form">

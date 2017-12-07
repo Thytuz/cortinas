@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import models.CategoriaModel;
 import models.ProdutoModel;
 
 public class ProdutoDAO implements DAO {
@@ -54,8 +55,9 @@ public class ProdutoDAO implements DAO {
             ps = conn.prepareStatement("SELECT * FROM `produtos`");
             rs = ps.executeQuery();
             while (rs.next()) {
+                CategoriaModel categoriaModel = new CategoriaModel(rs.getInt(2), null);
                 listaProdutos.add(new ProdutoModel(rs.getInt(1),
-                        rs.getInt(2), rs.getString(3),
+                        categoriaModel, rs.getString(3),
                         rs.getString(4), rs.getString(5), rs.getDouble(6)));
             }
 
@@ -75,6 +77,31 @@ public class ProdutoDAO implements DAO {
     @Override
     public void salvar(Object ob) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public ProdutoModel buscaProdutoPorId(int prodId) throws Exception {
+        PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        try {
+            conn = ConnectionDAO.getConnection();
+            ps = conn.prepareStatement("SELECT * FROM `produtos` WHERE prodId = ?");
+            ps.setInt(1, prodId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                CategoriaModel categoriaModel = new CategoriaModel(rs.getInt(2), null);
+                ProdutoModel produtoModel = new ProdutoModel(rs.getInt(1),
+                        categoriaModel, rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getDouble(6));
+                return produtoModel;
+            }
+
+        } catch (SQLException sqle) {
+            throw new Exception(sqle);
+        } finally {
+            ConnectionDAO.closeConnection(conn, ps, rs);
+        }
+        return null;
     }
 
 }

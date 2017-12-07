@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.CategoriaModel;
 import models.ProdutoModel;
 import org.json.simple.JSONObject;
 
@@ -38,20 +39,21 @@ public class ServletProdutos extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
+        RequestDispatcher rd = null;
         try (PrintWriter out = response.getWriter()) {
 
             String action = request.getParameter("action");
+            ProdutoDAO produtoDAO = new ProdutoDAO();
 
             if (action.equals("edit")) {
-                ProdutoDAO produtoDAO = new ProdutoDAO();
                 int prodId = Integer.parseInt(request.getParameter("prodId"));
-                int prodCateId = Integer.parseInt(request.getParameter("prodCateId"));
+                int cateId = Integer.parseInt(request.getParameter("prodCateId"));
                 String prodNome = request.getParameter("prodNome");
                 String prodCor = request.getParameter("prodCor");
                 String prodMarca = request.getParameter("prodMarca");
                 Double prodPreco = Double.parseDouble(request.getParameter("prodPreco"));
 
-                ProdutoModel produtoModel = new ProdutoModel(prodId, prodCateId, prodNome, prodCor, prodMarca, prodPreco);
+                ProdutoModel produtoModel = new ProdutoModel(prodId, new CategoriaModel(cateId, null), prodNome, prodCor, prodMarca, prodPreco);
                 JSONObject dados = new JSONObject();
                 dados = new JSONObject();
 
@@ -62,6 +64,16 @@ public class ServletProdutos extends HttpServlet {
                 } catch (Exception e) {
                     dados.put("Error", e.getMessage());
                 }
+            }
+
+            if (action.equals("detalhar")) {
+                int prodId = Integer.parseInt(request.getParameter("prodId"));
+                ProdutoModel produtoModel = produtoDAO.buscaProdutoPorId(prodId);
+                request.setAttribute("produtoModel", produtoModel);
+                rd = request.getRequestDispatcher("/detalheproduto.jsp");
+
+                rd.forward(request, response);
+
             }
         }
     }

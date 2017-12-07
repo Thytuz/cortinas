@@ -12,15 +12,15 @@ package models;
 public class ProdutoModel {
 
     private Integer prodId;
-    private Integer prodCateId;
+    private CategoriaModel categoriaModel;
     private String prodNome;
     private String prodCor;
     private String prodMarca;
     private Double prodPreco;
 
-    public ProdutoModel(Integer prodId, Integer prodCateId, String prodNome, String prodCor, String prodMarca, Double prodPreco) {
+    public ProdutoModel(Integer prodId, CategoriaModel categoriaModel, String prodNome, String prodCor, String prodMarca, Double prodPreco) {
         this.prodId = prodId;
-        this.prodCateId = prodCateId;
+        this.categoriaModel = categoriaModel;
         this.prodNome = prodNome;
         this.prodCor = prodCor;
         this.prodMarca = prodMarca;
@@ -35,12 +35,12 @@ public class ProdutoModel {
         this.prodId = prodId;
     }
 
-    public Integer getProdCateId() {
-        return prodCateId;
+    public CategoriaModel getCategoriaModel() {
+        return categoriaModel;
     }
 
-    public void setProdCateId(Integer prodCateId) {
-        this.prodCateId = prodCateId;
+    public void setCategoriaModel(CategoriaModel categoriaModel) {
+        this.categoriaModel = categoriaModel;
     }
 
     public String getProdNome() {

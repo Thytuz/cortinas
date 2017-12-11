@@ -31,7 +31,8 @@
                                         <th>Tamanho</th>
                                         <th>Material</th>
                                         <th>Descricao</th>
-                                        <th class="tabledit-toolbar-column">Ação</th></tr>
+                                        <th class="tabledit-toolbar-column">Ação</th>
+                                    </tr>
                                 </thead>
                                 <tbody id="tbody">     
                                 </tbody>
@@ -42,7 +43,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Upload Picture</h5>
+                                    <h5 class="modal-title">Upload Fotos</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -94,7 +95,6 @@
                                     alert('Fail!-' + erro);
                                 }
                             });
-
                         });
                     </script>
                     <script>

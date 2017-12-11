@@ -9,10 +9,21 @@
     FotoDAO fotoDAO = new FotoDAO();
 
     List<ProdutoModel> listaProdutos = produtoDAO.listaTodos();
-    List<FotoModel> listaFotos = fotoDAO.listaTodos();
-
     request.setAttribute("listaProdutos", listaProdutos);
+
+    List<FotoModel> listaFotos = fotoDAO.listaTodos();
     request.setAttribute("listaFotos", listaFotos);
+
+    List<ProdutoModel> listaCategorias = produtoDAO.listaCategorias();
+    request.setAttribute("listaCategorias", listaCategorias);
+
+    List<ProdutoModel> listaCores = produtoDAO.listaCores();
+    request.setAttribute("listaCores", listaCores);
+
+    List<ProdutoModel> listaMarcas = produtoDAO.listaMarcas();
+    request.setAttribute("listaMarcas", listaMarcas);
+
+
 %>
 <html>
     <!--header-->	
@@ -76,10 +87,10 @@
                 <section  class="sky-form">
                     <div class="product_right">
                         <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Categoria</h4>
-                        <c:forEach items="${listaProdutos}" var="produto">
+                        <c:forEach items="${listaCategorias}" var="categoria">
                             <div class="tab1">
                                 <ul class="place">								
-                                    <li class="sort"><c:out value="${produto.getProdCategoria()}"/></li>
+                                    <li class="sort"><c:out value="${categoria.getProdCategoria()}"/></li>
                                     <div class="clearfix"> </div>
                                 </ul>
                             </div>						  
@@ -89,10 +100,10 @@
                 <section  class="sky-form">
                     <div class="product_right">
                         <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Cor</h4>
-                        <c:forEach items="${listaProdutos}" var="produto">
+                        <c:forEach items="${listaCores}" var="cor">
                             <div class="tab1">
                                 <ul class="place">								
-                                    <li class="sort"><c:out value="${produto.getProdCor()}"/></li>
+                                    <li class="sort"><c:out value="${cor.getProdCor()}"/></li>
                                     <div class="clearfix"> </div>
                                 </ul>
                             </div>						  
@@ -102,10 +113,10 @@
                 <section  class="sky-form">
                     <div class="product_right">
                         <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Marca</h4>
-                        <c:forEach items="${listaProdutos}" var="produto">
+                        <c:forEach items="${listaMarcas}" var="marca">
                             <div class="tab1">
                                 <ul class="place">								
-                                    <li class="sort"><c:out value="${produto.getProdMarca()}"/></li>
+                                    <li class="sort"><c:out value="${marca.getProdMarca()}"/></li>
                                     <div class="clearfix"> </div>
                                 </ul>
                             </div>						  

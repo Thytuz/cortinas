@@ -1,9 +1,3 @@
-<%-- 
-    Document   : listaJSON
-    Created on : 08/11/2017, 17:22:48
-    Author     : tatuapu
---%>
-
 <%@page import="models.ProdutoModel"%>
 <%@page import="models.ClienteModel"%>
 <%@page import="java.io.StringWriter"%>
@@ -26,11 +20,10 @@
             dados = new JSONObject();
             dados.put("clieId", cm.getClieId().toString());
             dados.put("clieNome", cm.getClieNome().toString());
-            dados.put("clieCPF", cm.getClieCPF().toString());
+            dados.put("clieCPF", cm.getClieCPF());
             dados.put("clieEmail", cm.getClieEmail().toString());
-            dados.put("clieTelefone", cm.getClieTelefone().toString());
-            dados.put("clieEndereco", cm.getClieEndereco().toString());
-
+            dados.put("clieTelefone", cm.getClieTelefone());
+            dados.put("clieEndereco", cm.getClieEndereco());
             filhos.add(dados);
 
         }

@@ -8,8 +8,6 @@ package controllers;
 import daos.ClienteDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -71,14 +69,13 @@ public class ServletClientes extends HttpServlet {
                 String email = request.getParameter("email");
                 String telefone = request.getParameter("telefone");
                 String password = request.getParameter("password");
-
                 System.out.println(nome);
 
                 System.out.println(email);
                 System.out.println(telefone);
                 System.out.println(password);
 
-                ClienteModel clienteModel = new ClienteModel(null, nome, null, telefone, email, password, null);
+                ClienteModel clienteModel = new ClienteModel(null, nome, "", telefone, email, password, "");
                 try {
                     clienteDAO.salvar(clienteModel);
                     request.setAttribute("mensagem", "<div class='alert alert-success'> Conta criada com sucesso</div>");
@@ -89,8 +86,25 @@ public class ServletClientes extends HttpServlet {
                     rd = request.getRequestDispatcher("/criarconta.jsp");
                 }
 
-                rd.forward(request, response);
             }
+
+            if (action.equals("delete")) {
+
+                int clieId = Integer.parseInt(request.getParameter("clieId"));
+
+                ClienteModel clienteModel = new ClienteModel(clieId, null, null, null, null, null, null);
+                JSONObject dados = new JSONObject();
+                dados = new JSONObject();
+
+                try {
+                    clienteDAO.excluir(clienteModel);
+                    dados.put("Resposta", "Success!");
+                    out.print(dados);
+                } catch (Exception e) {
+                    dados.put("Error", e.getMessage());
+                }
+            }
+            rd.forward(request, response);
         }
     }
 

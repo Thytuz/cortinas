@@ -27,7 +27,8 @@
                                     <th>Email</th>
                                     <th>Telefone</th>
                                     <th>Endereço</th>
-                                    <th class="tabledit-toolbar-column">Ação</th></tr>
+                                    <th class="tabledit-toolbar-column">Ação</th>
+                                </tr>
                             </thead>
                             <tbody id="tbody">     
                             </tbody>
@@ -66,7 +67,6 @@
                                     alert('Fail!-' + erro);
                                 }
                             });
-
                         });
                     </script>
                     <script>

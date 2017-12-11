@@ -51,7 +51,23 @@ public class ClienteDAO implements DAO {
 
     @Override
     public void excluir(Object ob) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ClienteModel clienteModel = (ClienteModel) ob;
+        PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        try {
+            conn = ConnectionDAO.getConnection();
+            ps = conn.prepareStatement("DELETE FROM `clientes` WHERE clieId = ?");
+            ps.setInt(1, clienteModel.getClieId());
+            int resp = ps.executeUpdate();
+            if (resp == 0) {
+                throw new Exception("Erro");
+            }
+        } catch (SQLException sqle) {
+            throw new Exception(sqle);
+        } finally {
+            ConnectionDAO.closeConnection(conn, ps, rs);
+        }
     }
 
     @Override
@@ -98,7 +114,10 @@ public class ClienteDAO implements DAO {
             ps.setString(3, clienteModel.getClieEmail());
             ps.setString(4, clienteModel.getClieSenha());
 
-            ps.executeUpdate();
+            int resp = ps.executeUpdate();
+            if (resp == 0) {
+                throw new Exception("Erro");
+            }
 
         } catch (SQLException sqle) {
             throw new Exception(sqle);

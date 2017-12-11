@@ -106,4 +106,73 @@ public class ProdutoDAO implements DAO {
         return null;
     }
 
+    public List listaMarcas() throws Exception {
+        PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        List<ProdutoModel> listaProdutos = new ArrayList<>();
+        try {
+            conn = ConnectionDAO.getConnection();
+            ps = conn.prepareStatement("SELECT * FROM `produtos` GROUP BY prodMarca");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                listaProdutos.add(new ProdutoModel(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getDouble(6), rs.getString(7),
+                        rs.getString(8), rs.getString(9)));
+            }
+
+        } catch (SQLException sqle) {
+            throw new Exception(sqle);
+        } finally {
+            ConnectionDAO.closeConnection(conn, ps, rs);
+        }
+        return listaProdutos;
+    }
+
+    public List listaCores() throws Exception {
+        PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        List<ProdutoModel> listaProdutos = new ArrayList<>();
+        try {
+            conn = ConnectionDAO.getConnection();
+            ps = conn.prepareStatement("SELECT * FROM `produtos` GROUP BY prodCor");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                listaProdutos.add(new ProdutoModel(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getDouble(6), rs.getString(7),
+                        rs.getString(8), rs.getString(9)));
+            }
+
+        } catch (SQLException sqle) {
+            throw new Exception(sqle);
+        } finally {
+            ConnectionDAO.closeConnection(conn, ps, rs);
+        }
+        return listaProdutos;
+    }
+
+    public List listaCategorias() throws Exception {
+        PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        List<ProdutoModel> listaProdutos = new ArrayList<>();
+        try {
+            conn = ConnectionDAO.getConnection();
+            ps = conn.prepareStatement("SELECT * FROM `produtos` GROUP BY prodCategoria");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                listaProdutos.add(new ProdutoModel(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getDouble(6), rs.getString(7),
+                        rs.getString(8), rs.getString(9)));
+            }
+
+        } catch (SQLException sqle) {
+            throw new Exception(sqle);
+        } finally {
+            ConnectionDAO.closeConnection(conn, ps, rs);
+        }
+        return listaProdutos;
+    }
+
 }

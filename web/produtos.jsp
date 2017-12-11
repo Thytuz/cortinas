@@ -19,7 +19,7 @@
     <jsp:include page="templates/header.html"></jsp:include>
         <!--end header-->
         <body> 
-        <jsp:include page="templates/menu.html"></jsp:include>
+        <jsp:include page="templates/menu.jsp"></jsp:include>
             <div class="product-model">	 
                 <div class="container">
                     <!---728x90--->

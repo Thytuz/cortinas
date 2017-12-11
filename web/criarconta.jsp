@@ -5,7 +5,7 @@
         <!--end header-->
         <body>
             <!--menu-->
-        <jsp:include page="templates/menu.html"></jsp:include>
+        <jsp:include page="templates/menu.jsp"></jsp:include>
             <!--end menu-->	
             <div class="container">
                 <ol class="breadcrumb">

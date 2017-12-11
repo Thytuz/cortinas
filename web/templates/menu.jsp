@@ -1,3 +1,18 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="models.ProdutoModel"%>
+<%@page import="java.util.List"%>
+<%@page import="daos.ProdutoDAO"%>
+<%
+    ProdutoDAO produtoDAO = new ProdutoDAO();
+
+    List<ProdutoModel> listaCategorias = produtoDAO.listaCategorias();
+    List<ProdutoModel> listaCores = produtoDAO.listaCores();
+    List<ProdutoModel> listaMarcas = produtoDAO.listaMarcas();
+    request.setAttribute("listaCategorias", listaCategorias);
+    request.setAttribute("listaCores", listaCores);
+    request.setAttribute("listaMarcas", listaMarcas);
+%>
+
 <div class="header-top">
     <div class="header-bottom">			
         <div class="logo">
@@ -12,30 +27,25 @@
                             <div class="col1 me-one">
                                 <h4>Comprar</h4>
                                 <ul>
-                                    <li><a href="./produtos.jsp">Abra&#231;adeira</a></li>
-                                    <li><a href="./produtos.jsp">Pingente</a></li>
-                                    <li><a href="./produtos.jsp">Presilha</a></li>
-                                    <li><a href="./produtos.jsp">Porta Xale</a></li>
+                                    <c:forEach items="${listaCategorias}" var="categoria">
+                                        <li><a href="./produtos.jsp"><c:out value="${categoria.getProdCategoria()}"/></a></li>
+                                        </c:forEach>
                                 </ul>
                             </div>
                             <div class="col1 me-one">
                                 <h4>Cor</h4>
                                 <ul>
-                                    <li><a href="./produtos.jsp">Cinza</a></li>
-                                    <li><a href="./produtos.jsp">Marrom</a></li>
-                                    <li><a href="./produtos.jsp">Roxo</a></li>
-                                    <li><a href="./produtos.jsp">Branco</a></li>
-                                    <li><a href="./produtos.jsp">Bege</a></li>
+                                    <c:forEach items="${listaCores}" var="cor">
+                                        <li><a href="./produtos.jsp"><c:out value="${cor.getProdCor()}"/></a></li>
+                                        </c:forEach>
                                 </ul>	
                             </div>
                             <div class="col1 me-one">
                                 <h4>Marca</h4>
                                 <ul>
-                                    <li><a href="./produtos.jsp">Luba</a></li>
-                                    <li><a href="./produtos.jsp">Importado</a></li>
-                                    <li><a href="./produtos.jsp">DeVictor</a></li>
-                                    <li><a href="./produtos.jsp">Cousello</a></li>
-                                    <li><a href="./produtos.jsp">Vettra</a></li>
+                                    <c:forEach items="${listaMarcas}" var="marca">
+                                        <li><a href="./produtos.jsp"><c:out value="${marca.getProdMarca()}"/></a></li>
+                                        </c:forEach>
                                 </ul>	
                             </div>
                         </div>

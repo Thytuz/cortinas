@@ -33,7 +33,7 @@
                             </label>
                         </div>				
                         <input type="submit" value="Login">	
-                        <a class="acount-btn" href="criarconta.jsp">Cria sua conta</a>
+                        <a class="acount-btn" href="criarconta.jsp">Crie sua conta</a>
                     </form>
                     <a href="#">Esqueci minha senha!</a>
 

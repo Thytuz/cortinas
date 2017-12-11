@@ -12,19 +12,25 @@ package models;
 public class ProdutoModel {
 
     private Integer prodId;
-    private CategoriaModel categoriaModel;
+    private String prodCategoria;
     private String prodNome;
     private String prodCor;
     private String prodMarca;
     private Double prodPreco;
+    private String prodTamanho;
+    private String prodMaterial;
+    private String prodDescricao;
 
-    public ProdutoModel(Integer prodId, CategoriaModel categoriaModel, String prodNome, String prodCor, String prodMarca, Double prodPreco) {
+    public ProdutoModel(Integer prodId, String prodCategoria, String prodNome, String prodCor, String prodMarca, Double prodPreco, String prodTamanho, String prodMaterial, String prodDescricao) {
         this.prodId = prodId;
-        this.categoriaModel = categoriaModel;
+        this.prodCategoria = prodCategoria;
         this.prodNome = prodNome;
         this.prodCor = prodCor;
         this.prodMarca = prodMarca;
         this.prodPreco = prodPreco;
+        this.prodTamanho = prodTamanho;
+        this.prodMaterial = prodMaterial;
+        this.prodDescricao = prodDescricao;
     }
 
     public Integer getProdId() {
@@ -35,12 +41,12 @@ public class ProdutoModel {
         this.prodId = prodId;
     }
 
-    public CategoriaModel getCategoriaModel() {
-        return categoriaModel;
+    public String getProdCategoria() {
+        return prodCategoria;
     }
 
-    public void setCategoriaModel(CategoriaModel categoriaModel) {
-        this.categoriaModel = categoriaModel;
+    public void setProdCategoria(String prodCategoria) {
+        this.prodCategoria = prodCategoria;
     }
 
     public String getProdNome() {
@@ -73,6 +79,30 @@ public class ProdutoModel {
 
     public void setProdPreco(Double prodPreco) {
         this.prodPreco = prodPreco;
+    }
+
+    public String getProdTamanho() {
+        return prodTamanho;
+    }
+
+    public void setProdTamanho(String prodTamanho) {
+        this.prodTamanho = prodTamanho;
+    }
+
+    public String getProdMaterial() {
+        return prodMaterial;
+    }
+
+    public void setProdMaterial(String prodMaterial) {
+        this.prodMaterial = prodMaterial;
+    }
+
+    public String getProdDescricao() {
+        return prodDescricao;
+    }
+
+    public void setProdDescricao(String prodDescricao) {
+        this.prodDescricao = prodDescricao;
     }
 
 }

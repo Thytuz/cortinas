@@ -49,13 +49,13 @@
                             <div class="single-para ">
                                 <h4><c:out value="${produtoModel.getProdNome()}"/> </h4>							
                                 <h5 class="item_price">R$ <c:out value="${produtoModel.getProdPreco()}"/></h5>							
-                                <p class="para">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Vivamus porttitor tincidunt elementum nisi a, euismod rhoncus urna. Curabitur scelerisque vulputate diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat </p>
+                                <p class="para"><c:out value="${produtoModel.getProdDescricao()}"/></p>
                                 <div class="prdt-info-grid">
                                     <ul>
                                         <li>- Marca : <c:out value="${produtoModel.getProdMarca()}"/></li>
-                                        <li>- Tamanho : adicionar no BD</li>
+                                        <li>- Tamanho : <c:out value="${produtoModel.getProdTamanho()}"/></li>
                                         <li>- Cor : <c:out value="${produtoModel.getProdCor()}"/></li>
-                                        <li>- Material : Adicionar no BD</li>
+                                        <li>- Material : <c:out value="${produtoModel.getProdMaterial()}"/></li>
                                     </ul>
                                 </div>
 

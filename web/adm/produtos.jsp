@@ -28,6 +28,9 @@
                                         <th>Marca</th>
                                         <th>Preço</th>
                                         <th>Foto</th>
+                                        <th>Tamanho</th>
+                                        <th>Material</th>
+                                        <th>Descricao</th>
                                         <th class="tabledit-toolbar-column">Ação</th></tr>
                                 </thead>
                                 <tbody id="tbody">     
@@ -73,12 +76,15 @@
                                     $.each(dados, function (i, dados) {
                                         var body = "<tr>";
                                         body += "<td>" + dados.prodId + "</td>";
-                                        body += "<td>" + dados.cateId + "</td>";
+                                        body += "<td>" + dados.prodCategoria + "</td>";
                                         body += "<td>" + dados.prodNome + "</td>";
                                         body += "<td>" + dados.prodCor + "</td>";
                                         body += "<td>" + dados.prodMarca + "</td>";
                                         body += "<td>" + dados.prodPreco + "</td>";
                                         body += "<td> <button type=\"button\" onClick=\"abreGerenciadorFoto(" + dados.prodId + ");\" class=\" btn btn-sm btn-default\"><span class=\"glyphicon glyphicon-camera\"></span></button> </td>";
+                                        body += "<td>" + dados.prodTamanho + "</td>";
+                                        body += "<td>" + dados.prodMaterial + "</td>";
+                                        body += "<td>" + dados.prodDescricao + "</td>";
                                         body += "</tr>";
                                         $("#tbody").append(body);
                                     });
@@ -97,8 +103,9 @@
                                 url: "../produtos",
                                 columns: {
                                     identifier: [0, 'prodId'],
-                                    editable: [[1, 'prodCateId'], [2, 'prodNome'],
-                                        [3, 'prodCor'], [4, 'prodMarca'], [5, 'prodPreco']]
+                                    editable: [[1, 'prodCategoria'], [2, 'prodNome'],
+                                        [3, 'prodCor'], [4, 'prodMarca'], [5, 'prodPreco'],
+                                        [7, 'prodTamanho'], [8, 'prodMaterial'], [9, 'prodDescricao']]
                                 },
                                 onDraw: function () {
                                     console.log('onDraw()');

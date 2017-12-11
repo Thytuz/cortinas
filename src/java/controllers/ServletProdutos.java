@@ -16,7 +16,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.CategoriaModel;
 import models.ProdutoModel;
 import org.json.simple.JSONObject;
 
@@ -47,13 +46,17 @@ public class ServletProdutos extends HttpServlet {
 
             if (action.equals("edit")) {
                 int prodId = Integer.parseInt(request.getParameter("prodId"));
-                int cateId = Integer.parseInt(request.getParameter("prodCateId"));
+                String prodCategoria = request.getParameter("prodCategoria");
                 String prodNome = request.getParameter("prodNome");
                 String prodCor = request.getParameter("prodCor");
                 String prodMarca = request.getParameter("prodMarca");
                 Double prodPreco = Double.parseDouble(request.getParameter("prodPreco"));
+                String prodTamanho = request.getParameter("prodTamanho");
+                String prodMaterial = request.getParameter("prodMaterial");
+                String prodDescricao = request.getParameter("prodDescricao");
 
-                ProdutoModel produtoModel = new ProdutoModel(prodId, new CategoriaModel(cateId, null), prodNome, prodCor, prodMarca, prodPreco);
+                ProdutoModel produtoModel = new ProdutoModel(prodId, prodCategoria,
+                        prodNome, prodCor, prodMarca, prodPreco, prodTamanho, prodMaterial, prodDescricao);
                 JSONObject dados = new JSONObject();
                 dados = new JSONObject();
 

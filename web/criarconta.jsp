@@ -14,7 +14,7 @@
                 </ol>
                 <div class="registration">
                     <div class="registration_left">
-                        <h2>Novo usuário? <span> Cria uma conta! </span></h2>
+                        <h2>Novo usuário? <span> Crie uma conta! </span></h2>
                         <!-- [if IE] 
                                < link rel='stylesheet' type='text/css' href='ie.css'/>  
                         [endif] -->  
@@ -65,12 +65,12 @@
                             <form action="./clientes" method="POST">
                                 <div>
                                     <label>
-                                        <input required name="nome" placeholder="Nome" type="text" tabindex="1">
+                                        <input required name="nome" placeholder="*Nome" type="text" tabindex="1">
                                     </label>
                                 </div>
                                 <div>
                                     <label>
-                                        <input required name="email" placeholder="E-mail" type="email" tabindex="3">
+                                        <input required name="email" placeholder="*E-mail" type="email" tabindex="3">
                                     </label>
                                 </div>
                                 <div>
@@ -80,17 +80,17 @@
                                 </div>					
                                 <div>
                                     <label>
-                                        <input required name="password" placeholder="Senha" type="password" tabindex="4">
+                                        <input required name="password" placeholder="*Senha" type="password" tabindex="4">
                                     </label>
                                 </div>						
                                 <div>
                                     <label>
-                                        <input required name="passwordOk" placeholder="Confirme senha" type="password" tabindex="4">
+                                        <input required name="passwordOk" placeholder="*Confirme senha" type="password" tabindex="4">
                                     </label>
                                 </div>	
                                 <div class="sky-form">
                                     <label class="checkbox">
-                                        <input type="checkbox" name="checkbox" ><i></i>Eu li e concordo com os <a class="terms" href="#"> termos de uso</a>
+                                        <input required type="checkbox" name="checkbox" ><i></i>Eu li e concordo com os <a class="terms" href="#"> termos de uso</a>
                                     </label>
                                 </div>
                                 <div>

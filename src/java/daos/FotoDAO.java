@@ -32,7 +32,7 @@ public class FotoDAO implements DAO {
             ps = conn.prepareStatement("SELECT * FROM fotos GROUP BY fotoProdId");
             rs = ps.executeQuery();
             while (rs.next()) {
-                ProdutoModel produtoModel = new ProdutoModel(rs.getInt(3), null, null, null, null, null);
+                ProdutoModel produtoModel = new ProdutoModel(rs.getInt(3), null, null, null, null, null, null, null, null);
                 listaFotos.add(new FotoModel(rs.getInt(1),
                         rs.getString(2), produtoModel));
             }
@@ -66,7 +66,7 @@ public class FotoDAO implements DAO {
             ps.setInt(1, prodId);
             rs = ps.executeQuery();
             while (rs.next()) {
-                ProdutoModel produtoModel = new ProdutoModel(rs.getInt(3), null, null, null, null, null);
+                ProdutoModel produtoModel = new ProdutoModel(rs.getInt(3), null, null, null, null, null, null, null, null);
                 listaFotos.add(new FotoModel(rs.getInt(1),
                         rs.getString(2), produtoModel));
             }

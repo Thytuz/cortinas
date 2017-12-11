@@ -1,22 +1,17 @@
 <%@page import="models.FotoModel"%>
 <%@page import="daos.FotoDAO"%>
-<%@page import="models.CategoriaModel"%>
-<%@page import="daos.CategoriaDAO"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="daos.ProdutoDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="models.ProdutoModel"%>
 <%
     ProdutoDAO produtoDAO = new ProdutoDAO();
-    CategoriaDAO categoriaDAO = new CategoriaDAO();
     FotoDAO fotoDAO = new FotoDAO();
 
     List<ProdutoModel> listaProdutos = produtoDAO.listaTodos();
-    List<CategoriaModel> listaCategorias = categoriaDAO.listaTodos();
     List<FotoModel> listaFotos = fotoDAO.listaTodos();
 
     request.setAttribute("listaProdutos", listaProdutos);
-    request.setAttribute("listaCategorias", listaCategorias);
     request.setAttribute("listaFotos", listaFotos);
 %>
 <!DOCTYPE html>

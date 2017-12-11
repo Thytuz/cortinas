@@ -194,14 +194,14 @@ h1.b1,h2.b2,h3.b3 {
     z-index: 1;
 }
 .banner-info h3{
-    color: #FFF;
+    color: #0000007a;
     font-weight: 700;
     font-size:3em;
     text-transform: uppercase;
     z-index: 999;
 }
 .banner-info p{
-    color: #FFF;
+    color: #0000007a;
     line-height: 1.5em;
     font-size: 1.2em;
     width:70%;

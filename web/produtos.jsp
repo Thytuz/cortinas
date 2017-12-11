@@ -1,22 +1,17 @@
 <%@page import="models.FotoModel"%>
 <%@page import="daos.FotoDAO"%>
-<%@page import="models.CategoriaModel"%>
-<%@page import="daos.CategoriaDAO"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="daos.ProdutoDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="models.ProdutoModel"%>
 <%
     ProdutoDAO produtoDAO = new ProdutoDAO();
-    CategoriaDAO categoriaDAO = new CategoriaDAO();
     FotoDAO fotoDAO = new FotoDAO();
 
     List<ProdutoModel> listaProdutos = produtoDAO.listaTodos();
-    List<CategoriaModel> listaCategorias = categoriaDAO.listaTodos();
     List<FotoModel> listaFotos = fotoDAO.listaTodos();
 
     request.setAttribute("listaProdutos", listaProdutos);
-    request.setAttribute("listaCategorias", listaCategorias);
     request.setAttribute("listaFotos", listaFotos);
 %>
 <html>
@@ -69,66 +64,6 @@
 
             <div class="rsidebar span_1_of_left">
                 <section  class="sky-form">
-                    <div class="product_right">
-                        <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Categorias</h4>
-                        <c:forEach items="${listaCategorias}" var="categoria">
-                            <div class="tab1">
-                                <ul class="place">								
-                                    <li class="sort"><c:out value="${categoria.getCateNome()}"/></li>
-                                    <div class="clearfix"> </div>
-                                </ul>
-                            </div>						  
-                        </c:forEach>
-                        <!--script-->
-                        <script>
-                            $(document).ready(function () {
-                                $(".tab1 .single-bottom").hide();
-                                $(".tab2 .single-bottom").hide();
-                                $(".tab3 .single-bottom").hide();
-                                $(".tab4 .single-bottom").hide();
-                                $(".tab5 .single-bottom").hide();
-
-                                $(".tab1 ul").click(function () {
-                                    $(".tab1 .single-bottom").slideToggle(300);
-                                    $(".tab2 .single-bottom").hide();
-                                    $(".tab3 .single-bottom").hide();
-                                    $(".tab4 .single-bottom").hide();
-                                    $(".tab5 .single-bottom").hide();
-                                })
-                                $(".tab2 ul").click(function () {
-                                    $(".tab2 .single-bottom").slideToggle(300);
-                                    $(".tab1 .single-bottom").hide();
-                                    $(".tab3 .single-bottom").hide();
-                                    $(".tab4 .single-bottom").hide();
-                                    $(".tab5 .single-bottom").hide();
-                                })
-                                $(".tab3 ul").click(function () {
-                                    $(".tab3 .single-bottom").slideToggle(300);
-                                    $(".tab4 .single-bottom").hide();
-                                    $(".tab5 .single-bottom").hide();
-                                    $(".tab2 .single-bottom").hide();
-                                    $(".tab1 .single-bottom").hide();
-                                })
-                                $(".tab4 ul").click(function () {
-                                    $(".tab4 .single-bottom").slideToggle(300);
-                                    $(".tab5 .single-bottom").hide();
-                                    $(".tab3 .single-bottom").hide();
-                                    $(".tab2 .single-bottom").hide();
-                                    $(".tab1 .single-bottom").hide();
-                                })
-                                $(".tab5 ul").click(function () {
-                                    $(".tab5 .single-bottom").slideToggle(300);
-                                    $(".tab4 .single-bottom").hide();
-                                    $(".tab3 .single-bottom").hide();
-                                    $(".tab2 .single-bottom").hide();
-                                    $(".tab1 .single-bottom").hide();
-                                })
-                            });
-                        </script>
-                        <!-- script -->					 
-                </section>
-
-                <section  class="sky-form">
                     <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Preço</h4>
                     <ul class="dropdown-menu1">
                         <li>							               
@@ -137,6 +72,47 @@
                         </li>			
                     </ul>
                 </section>
+
+                <section  class="sky-form">
+                    <div class="product_right">
+                        <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Categoria</h4>
+                        <c:forEach items="${listaProdutos}" var="produto">
+                            <div class="tab1">
+                                <ul class="place">								
+                                    <li class="sort"><c:out value="${produto.getProdCategoria()}"/></li>
+                                    <div class="clearfix"> </div>
+                                </ul>
+                            </div>						  
+                        </c:forEach>
+                </section>
+
+                <section  class="sky-form">
+                    <div class="product_right">
+                        <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Cor</h4>
+                        <c:forEach items="${listaProdutos}" var="produto">
+                            <div class="tab1">
+                                <ul class="place">								
+                                    <li class="sort"><c:out value="${produto.getProdCor()}"/></li>
+                                    <div class="clearfix"> </div>
+                                </ul>
+                            </div>						  
+                        </c:forEach>
+                </section>
+
+                <section  class="sky-form">
+                    <div class="product_right">
+                        <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Marca</h4>
+                        <c:forEach items="${listaProdutos}" var="produto">
+                            <div class="tab1">
+                                <ul class="place">								
+                                    <li class="sort"><c:out value="${produto.getProdMarca()}"/></li>
+                                    <div class="clearfix"> </div>
+                                </ul>
+                            </div>						  
+                        </c:forEach>
+                </section>
+
+
                 <!---->
                 <script type='text/javascript'>//<![CDATA[ 
                     $(window).load(function () {

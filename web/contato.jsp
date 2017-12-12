@@ -17,7 +17,6 @@
                         <li class="active">Contato</li>
                     </ol>
                     <!--start contact-->
-                    <h3>Contate-nos</h3>
                     <div class="section group">				
                         <div class="col-md-6 span_1_of_3">
                             <div class="contact_info">
@@ -38,32 +37,28 @@
                                 <p>Follow on: <a href="#">Facebook</a>, <a href="#">Twitter</a></p>
                             </div>
                         </div>				
-                        <div class="col-md-6 span_2_of_3">
-                            <div class="contact-form">
-                                <form>
-                                    <div>
-                                        <span><label>Nome</label></span>
-                                        <span><input name="userName" type="text" class="textbox"></span>
-                                    </div>
-                                    <div>
-                                        <span><label>E-mail</label></span>
-                                        <span><input name="userEmail" type="text" class="textbox"></span>
-                                    </div>
-                                    <div>
-                                        <span><label>Telefone</label></span>
-                                        <span><input name="userPhone" type="text" class="textbox"></span>
-                                    </div>
-                                    <div>
-                                        <span><label>Mensagem</label></span>
-                                        <span><textarea name="userMsg"> </textarea></span>
-                                    </div>
-                                    <div>
-                                        <span><input type="submit" class="mybutton" value="Enviar"></span>
-                                    </div>
-                                </form>
+                        <div class="registration">
+                            <div class="registration_left">
+                                <h2>Contate-nos</h2>
+                                <div class="registration_form log contact-form">
+                                    <form>
+                                        <h5>*Nome</h5>
+                                        <input required name="userName" type="text" class="textbox">
+                                        <h5>*Email</h5>
+                                        <input required name="userEmail"type="text" class="textbox">
 
-                            </div>
-                        </div>				
+                                        <h5>Telefone</h5>
+                                        <input name="userPhone" type="text" class="textbox">
+
+                                        <h5>*Mensagem</h5>
+                                        <span><textarea name="userMsg"> </textarea></span>
+                                        <div>
+                                            <span><input type="submit" class="mybutton" value="Enviar"></span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>				
+                        </div>
                     </div>
                 </div>
             </div>

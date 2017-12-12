@@ -38,6 +38,8 @@ public class ServletProdutos extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+
         RequestDispatcher rd = null;
         try (PrintWriter out = response.getWriter()) {
 
@@ -75,9 +77,34 @@ public class ServletProdutos extends HttpServlet {
                 request.setAttribute("produtoModel", produtoModel);
                 rd = request.getRequestDispatcher("/detalheproduto.jsp");
 
-                rd.forward(request, response);
+            }
+
+            if (action.equals("adicionarnovoproduto")) {
+                String prodCategoria = request.getParameter("prodCategoria");
+                String prodNome = request.getParameter("prodNome");
+                String prodCor = request.getParameter("prodCor");
+                String prodMarca = request.getParameter("prodMarca");
+                Double prodPreco = Double.parseDouble(request.getParameter("prodPreco"));
+                String prodTamanho = request.getParameter("prodTamanho");
+                String prodMaterial = request.getParameter("prodMaterial");
+                String prodDescricao = request.getParameter("prodDescricao");
+
+                ProdutoModel produtoModel = new ProdutoModel(null, prodCategoria, prodNome, prodCor,
+                        prodMarca, prodPreco, prodTamanho, prodMaterial, prodDescricao);
+                try {
+                    produtoDAO.salvar(produtoModel);
+                    request.setAttribute("mensagem", "<div class='alert alert-success'> Produto adicionado com sucesso</div>");
+                    rd = request.getRequestDispatcher("/admprodutos.jsp");
+
+                } catch (Exception ex) {
+                    request.setAttribute("mensagem", "<div class='alert alert-danger'> Erro ao adicionar produto</div>");
+                    rd = request.getRequestDispatcher("/admnovoproduto.jsp");
+                }
 
             }
+
+            rd.forward(request, response);
+
         }
     }
 

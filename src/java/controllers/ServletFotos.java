@@ -33,7 +33,7 @@ public class ServletFotos extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         RequestDispatcher rd = null;
         try (PrintWriter out = response.getWriter()) {
-            rd = request.getRequestDispatcher("/adm/fotos.jsp");
+            rd = request.getRequestDispatcher("/admfotos.jsp");
             rd.forward(request, response);
         }
     }

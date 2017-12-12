@@ -79,7 +79,35 @@ public class ProdutoDAO implements DAO {
 
     @Override
     public void salvar(Object ob) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        ProdutoModel produtoModel = (ProdutoModel) ob;
+
+        try {
+            conn = ConnectionDAO.getConnection();
+            ps = conn.prepareStatement("INSERT INTO `produtos` (`prodCategoria`, `prodNome`, `prodCor`,"
+                    + " `prodMarca`, `prodPreco`, `prodTamanho`, `prodMaterial`, `prodDescricao`)"
+                    + " VALUES (?, ?, ?, ?, ?, ?, ?, ?) ");
+            ps.setString(1, produtoModel.getProdCategoria());
+            ps.setString(2, produtoModel.getProdNome());
+            ps.setString(3, produtoModel.getProdCor());
+            ps.setString(4, produtoModel.getProdMarca());
+            ps.setDouble(5, produtoModel.getProdPreco());
+            ps.setString(6, produtoModel.getProdTamanho());
+            ps.setString(7, produtoModel.getProdMaterial());
+            ps.setString(8, produtoModel.getProdDescricao());
+
+            int resp = ps.executeUpdate();
+            if (resp == 0) {
+                throw new Exception("Erro");
+            }
+
+        } catch (SQLException sqle) {
+            throw new Exception(sqle);
+        } finally {
+            ConnectionDAO.closeConnection(conn, ps, rs);
+        }
     }
 
     public ProdutoModel buscaProdutoPorId(int prodId) throws Exception {

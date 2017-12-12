@@ -22,16 +22,10 @@
                 <h2>Login</h2>
                 <div class="col-md-6 log">			 
                     <form>
-                        <div>
-                            <label>
-                                <input placeholder="Nome" type="text" tabindex="1">
-                            </label>
-                        </div>
-                        <div>
-                            <label>
-                                <input placeholder="Senha" type="password" tabindex="4">
-                            </label>
-                        </div>				
+                        <h5>*Email</h5>
+                        <input required type="text">
+                        <h5>*Senha</h5>
+                        <input required type="password">
                         <input type="submit" value="Login">	
                         <a class="acount-btn" href="criarconta.jsp">Crie sua conta</a>
                     </form>

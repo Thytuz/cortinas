@@ -15,79 +15,19 @@
                 <div class="registration">
                     <div class="registration_left">
                         <h2>Novo usuário? <span> Crie uma conta! </span></h2>
-                        <!-- [if IE] 
-                               < link rel='stylesheet' type='text/css' href='ie.css'/>  
-                        [endif] -->  
-
-                        <!-- [if lt IE 7]>  
-                               < link rel='stylesheet' type='text/css' href='ie6.css'/>  
-                        <! [endif] -->  
-                        <script>
-                            (function () {
-
-                                // Create input element for testing
-                                var inputs = document.createElement('input');
-
-                                // Create the supports object
-                                var supports = {};
-
-                                supports.autofocus = 'autofocus' in inputs;
-                                supports.required = 'required' in inputs;
-                                supports.placeholder = 'placeholder' in inputs;
-
-                                // Fallback for autofocus attribute
-                                if (!supports.autofocus) {
-
-                                }
-
-                                // Fallback for required attribute
-                                if (!supports.required) {
-
-                                }
-
-                                // Fallback for placeholder attribute
-                                if (!supports.placeholder) {
-
-                                }
-
-                                // Change text inside send button on submit
-                                var send = document.getElementById('register-submit');
-                                if (send) {
-                                    send.onclick = function () {
-                                        this.innerHTML = '...Sending';
-                                    }
-                                }
-
-                            })();
-                        </script>
-                        <div class="registration_form">
+                        <div class="registration_form log">
                             <!-- Form -->
                             <form action="./clientes" method="POST">
-                                <div>
-                                    <label>
-                                        <input required name="nome" placeholder="*Nome" type="text" tabindex="1">
-                                    </label>
-                                </div>
-                                <div>
-                                    <label>
-                                        <input required name="email" placeholder="*E-mail" type="email" tabindex="3">
-                                    </label>
-                                </div>
-                                <div>
-                                    <label>
-                                        <input name="telefone" placeholder="Telefone" type="text" tabindex="3">
-                                    </label>
-                                </div>					
-                                <div>
-                                    <label>
-                                        <input required name="password" placeholder="*Senha" type="password" tabindex="4">
-                                    </label>
-                                </div>						
-                                <div>
-                                    <label>
-                                        <input required name="passwordOk" placeholder="*Confirme senha" type="password" tabindex="4">
-                                    </label>
-                                </div>	
+                                <h5>*Nome</h5>
+                                <input required name="nome" type="text">
+                                <h5>*Email</h5>
+                                <input required name="email" type="text">
+                                <h5>Telefone</h5>
+                                <input name="telefone" type="text">
+                                <h5>*Senha</h5>
+                                <input required name="password" type="password">
+                                <h5>*Confirme a Senha</h5>
+                                <input required name="passwordOk" type="password">
                                 <div class="sky-form">
                                     <label class="checkbox">
                                         <input required type="checkbox" name="checkbox" ><i></i>Eu li e concordo com os <a class="terms" href="#"> termos de uso</a>
@@ -103,19 +43,13 @@
                     </div>
                     <div class="registration_left">
                         <h2>Já possui uma conta? <span> Faça login! </span></h2>
-                        <div class="registration_form">
+                        <div class="registration_form log">
                             <!-- Form -->
                             <form>
-                                <div>
-                                    <label>
-                                        <input placeholder="Email" type="email" tabindex="3" required>
-                                    </label>
-                                </div>
-                                <div>
-                                    <label>
-                                        <input placeholder="Senha" type="password" tabindex="4" required>
-                                    </label>
-                                </div>						
+                                <h5>*Email</h5>
+                                <input name="email" type="text" required>
+                                <h5>*Senha</h5>
+                                <input type="password" required>
                                 <div>
                                     <input type="submit" value="Entrar">
                                 </div>

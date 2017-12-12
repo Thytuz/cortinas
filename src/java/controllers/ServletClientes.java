@@ -36,6 +36,7 @@ public class ServletClientes extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         RequestDispatcher rd = null;
         try (PrintWriter out = response.getWriter()) {
 
@@ -69,11 +70,6 @@ public class ServletClientes extends HttpServlet {
                 String email = request.getParameter("email");
                 String telefone = request.getParameter("telefone");
                 String password = request.getParameter("password");
-                System.out.println(nome);
-
-                System.out.println(email);
-                System.out.println(telefone);
-                System.out.println(password);
 
                 ClienteModel clienteModel = new ClienteModel(null, nome, "", telefone, email, password, "");
                 try {

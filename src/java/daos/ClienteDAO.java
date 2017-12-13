@@ -127,4 +127,28 @@ public class ClienteDAO implements DAO {
 
     }
 
+    public ClienteModel login(ClienteModel clienteModel) throws Exception {
+        PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+
+        try {
+            conn = ConnectionDAO.getConnection();
+            ps = conn.prepareStatement("SELECT * FROM clientes WHERE clieEmail = ? AND clieSenha = ?");
+            ps.setString(1, clienteModel.getClieEmail());
+            ps.setString(2, clienteModel.getClieSenha());
+
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                clienteModel = new ClienteModel(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                return clienteModel;
+            }
+
+        } catch (SQLException sqle) {
+            throw new Exception(sqle);
+        } finally {
+            ConnectionDAO.closeConnection(conn, ps, rs);
+        }
+        return new ClienteModel(null, null, null, null, null, null, null);
+    }
 }

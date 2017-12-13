@@ -81,7 +81,7 @@
                                 <div class="product-img b-link-stripe b-animate-go  thickbox">
                                     <c:forEach items="${listaFotos}" var="foto">
                                         <c:if test="${foto.getProdutoModel().getProdId() == produto.getProdId()}">
-                                            <img src="<c:out value="${foto.getFotoSrc()}"/>" class="img-responsive" alt="">
+                                            <img src="<c:out value="images/${foto.getFotoSrc()}"/>" class="img-responsive" alt="">
                                         </c:if>
                                     </c:forEach>
                                     <div class="b-wrapper">

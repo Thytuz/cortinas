@@ -46,7 +46,7 @@ public class ServletProdutos extends HttpServlet {
             String action = request.getParameter("action");
             ProdutoDAO produtoDAO = new ProdutoDAO();
 
-            if (action.equals("edit")) {
+            if (action.equalsIgnoreCase("edit")) {
                 int prodId = Integer.parseInt(request.getParameter("prodId"));
                 String prodCategoria = request.getParameter("prodCategoria");
                 String prodNome = request.getParameter("prodNome");
@@ -71,7 +71,7 @@ public class ServletProdutos extends HttpServlet {
                 }
             }
 
-            if (action.equals("detalhar")) {
+            if (action.equalsIgnoreCase("detalhar")) {
                 int prodId = Integer.parseInt(request.getParameter("prodId"));
                 ProdutoModel produtoModel = produtoDAO.buscaProdutoPorId(prodId);
                 request.setAttribute("produtoModel", produtoModel);
@@ -79,7 +79,7 @@ public class ServletProdutos extends HttpServlet {
 
             }
 
-            if (action.equals("adicionarnovoproduto")) {
+            if (action.equalsIgnoreCase("adicionarnovoproduto")) {
                 String prodCategoria = request.getParameter("prodCategoria");
                 String prodNome = request.getParameter("prodNome");
                 String prodCor = request.getParameter("prodCor");
@@ -101,6 +101,21 @@ public class ServletProdutos extends HttpServlet {
                     rd = request.getRequestDispatcher("/admnovoproduto.jsp");
                 }
 
+            }
+
+            if (action.equalsIgnoreCase("delete")) {
+                int prodId = Integer.parseInt(request.getParameter("prodId"));
+                ProdutoModel prodModel = new ProdutoModel(prodId, null, null, null, null, null,
+                        null, null, null);
+                JSONObject dados = new JSONObject();
+                dados = new JSONObject();
+                try {
+                    produtoDAO.excluir(prodModel);
+                    dados.put("Resposta", "Success!");
+                    out.print(dados);
+                } catch (Exception e) {
+                    dados.put("Error", e.getMessage());
+                }
             }
 
             rd.forward(request, response);

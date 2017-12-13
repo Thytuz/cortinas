@@ -1,6 +1,13 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <%
+        HttpSession sessao = request.getSession();
+        Integer usuaId = (Integer) (sessao.getAttribute("usuaId"));
+        request.setAttribute("usuaId", usuaId);
+        String mensagem = (String) request.getAttribute("mensagem");
+    %>
 
     <!--head-->	
     <jsp:include page="templates/header.html"></jsp:include>
@@ -10,12 +17,16 @@
 
             <!--header-->	
         <jsp:include page="templates/admmenu.html"></jsp:include>
-        <!--end header-->
+            <!--end header-->
+        <c:if test="${usuaId == null}">
+            <jsp:include page="templates/admmodallogin.jsp"></jsp:include>
+
+        </c:if>
         <div class="container">
 
             <ol class="breadcrumb">
                 <li><a href="admprincipal.jsp">Home</a></li>
-                <li class="active">Produtos</li>
+                <li class="active">Clientes</li>
             </ol>
 
             <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
@@ -104,5 +115,7 @@
                 </script>
             </main>
         </div>
+
+        <script src="js/msgjs.js"></script>
     </body>
 </html>

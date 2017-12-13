@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import models.ClienteModel;
 import org.json.simple.JSONObject;
 
@@ -43,7 +44,7 @@ public class ServletClientes extends HttpServlet {
             String action = request.getParameter("action");
             ClienteDAO clienteDAO = new ClienteDAO();
 
-            if (action.equals("edit")) {
+            if (action.equalsIgnoreCase("edit")) {
 
                 int clieId = Integer.parseInt(request.getParameter("clieId"));
                 String clieNome = request.getParameter("clieNome");
@@ -65,7 +66,7 @@ public class ServletClientes extends HttpServlet {
                 }
             }
 
-            if (action.equals("criarconta")) {
+            if (action.equalsIgnoreCase("criarconta")) {
                 String nome = request.getParameter("nome");
                 String email = request.getParameter("email");
                 String telefone = request.getParameter("telefone");
@@ -84,7 +85,7 @@ public class ServletClientes extends HttpServlet {
 
             }
 
-            if (action.equals("delete")) {
+            if (action.equalsIgnoreCase("delete")) {
 
                 int clieId = Integer.parseInt(request.getParameter("clieId"));
 
@@ -99,6 +100,38 @@ public class ServletClientes extends HttpServlet {
                 } catch (Exception e) {
                     dados.put("Error", e.getMessage());
                 }
+            }
+
+            if (action.equalsIgnoreCase("logar")) {
+                String clieEmail = request.getParameter("email");
+                String clieSenha = request.getParameter("senha");
+
+                ClienteModel clienteModel = new ClienteModel(null, null, null, null, clieEmail, clieSenha, null);
+
+                try {
+                    clienteModel = clienteDAO.login(clienteModel);
+                    if (clienteModel.getClieId() == null) {
+                        request.setAttribute("mensagem", "<div class='alert alert-danger'> Email ou senha incorretos</div>");
+                        rd = request.getRequestDispatcher("/login.jsp");
+                    } else {
+                        request.setAttribute("mensagem", "<div class='alert alert-success'> Seja Bem Vindo " + clienteModel.getClieNome() + "</div>");
+                        HttpSession sessao = request.getSession(true);
+                        sessao.setAttribute("clieId", clienteModel.getClieId());
+                        sessao.setAttribute("clieNome", clienteModel.getClieNome());
+                        rd = request.getRequestDispatcher("/index.jsp");
+                    }
+
+                } catch (Exception ex) {
+                    request.setAttribute("mensagem", "<div class='alert alert-danger'> ERRO GRAVE!</div>");
+                    rd = request.getRequestDispatcher("/login.jsp");
+                }
+
+            }
+
+            if (action.equalsIgnoreCase("sair")) {
+                HttpSession sessao = request.getSession(true);
+                sessao.setAttribute("clieId", null);
+                rd = request.getRequestDispatcher("/index.jsp");
             }
             rd.forward(request, response);
         }

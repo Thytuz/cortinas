@@ -26,8 +26,8 @@
                                 <div class="flexslider">
                                     <ul class="slides">
                                     <c:forEach items="${listaFotos}" var="foto">
-                                        <li data-thumb="<c:out value="${foto.getFotoSrc()}"/>">
-                                            <div class="thumb-image"> <img src="<c:out value="${foto.getFotoSrc()}"/>" data-imagezoom="true" class="img-responsive" alt=""/> </div>
+                                        <li data-thumb="<c:out value="images/${foto.getFotoSrc()}"/>">
+                                            <div class="thumb-image"> <img src="<c:out value="images/${foto.getFotoSrc()}"/>" data-imagezoom="true" class="img-responsive" alt=""/> </div>
                                         </li>
                                     </c:forEach>
                                 </ul>

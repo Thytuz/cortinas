@@ -45,7 +45,23 @@ public class ProdutoDAO implements DAO {
 
     @Override
     public void excluir(Object ob) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ProdutoModel produtoModel = (ProdutoModel) ob;
+        PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        try {
+            conn = ConnectionDAO.getConnection();
+            ps = conn.prepareStatement("DELETE FROM `produtos` WHERE prodId = ?");
+            ps.setInt(1, produtoModel.getProdId());
+            int resp = ps.executeUpdate();
+            if (resp == 0) {
+                throw new Exception("Erro");
+            }
+        } catch (SQLException sqle) {
+            throw new Exception(sqle);
+        } finally {
+            ConnectionDAO.closeConnection(conn, ps, rs);
+        }
     }
 
     @Override

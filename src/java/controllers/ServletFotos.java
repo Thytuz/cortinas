@@ -1,22 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controllers;
 
+import daos.FotoDAO;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.FotoModel;
+import models.ProdutoModel;
 
-/**
- *
- * @author mtsth
- */
+@WebServlet(name = "ServletFotos", urlPatterns = {"/fotos"})
 public class ServletFotos extends HttpServlet {
 
     /**
@@ -31,14 +29,49 @@ public class ServletFotos extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+
         RequestDispatcher rd = null;
+
         try (PrintWriter out = response.getWriter()) {
-            rd = request.getRequestDispatcher("/admfotos.jsp");
+
+            String action = (request.getParameter("action") != null) ? request.getParameter("action") : "default";
+            FotoDAO fotoDao = new FotoDAO();
+
+            if (action.equalsIgnoreCase("novo")) {
+                rd = request.getRequestDispatcher("/admfotos.jsp");
+            }
+
+            if (action.equalsIgnoreCase("editar")) {
+                int prodId = Integer.parseInt(request.getParameter("prodId"));
+                try {
+                    List<FotoModel> listaFotos = fotoDao.buscaFotosPorIdProduto(prodId);
+                    request.setAttribute("listaFotos", listaFotos);
+                    request.setAttribute("prodId", prodId);
+                    rd = request.getRequestDispatcher("/admfotos.jsp");
+                } catch (Exception e) {
+                    rd = request.getRequestDispatcher("/admprincipal.jsp");
+                }
+            }
+
+            if (action.equalsIgnoreCase("salvar")) {
+                int prodId = Integer.parseInt(request.getParameter("prodId"));
+                String src = request.getParameter("imagem");
+                try {
+                    fotoDao.salvar(new FotoModel(null, src, new ProdutoModel(prodId, null, null,
+                            null, null, null, null, null, null)));
+                    List<FotoModel> listaFotos = fotoDao.buscaFotosPorIdProduto(prodId);
+                    request.setAttribute("listaFotos", listaFotos);
+                    rd = request.getRequestDispatcher("/admfotos.jsp");
+                } catch (Exception e) {
+                    rd = request.getRequestDispatcher("/admprincipal.jsp");
+                }
+            }
             rd.forward(request, response);
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

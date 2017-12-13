@@ -1,6 +1,13 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <%
+        HttpSession sessao = request.getSession();
+        Integer usuaId = (Integer) (sessao.getAttribute("usuaId"));
+        request.setAttribute("usuaId", usuaId);
+        String mensagem = (String) request.getAttribute("mensagem");
+    %>
 
     <!--head-->	
     <jsp:include page="templates/header.html"></jsp:include>
@@ -11,14 +18,17 @@
             <!--header-->	
         <jsp:include page="templates/admmenu.html"></jsp:include>
             <!--end header-->
-            <div class="container">
 
-                <ol class="breadcrumb">
-                    <li><a href="admprincipal.jsp">Home</a></li>
-                    <li class="active">Produtos</li>
-                </ol>
+        <c:if test="${usuaId == null}">
+            <jsp:include page="templates/admmodallogin.jsp"></jsp:include>
+        </c:if>
+
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="admprincipal.jsp">Home</a></li>
+                <li class="active">Produtos</li>
+            </ol>
             <%
-                String mensagem = (String) request.getAttribute("mensagem");
                 if (mensagem != null) {
                     out.println(mensagem);
                 }
@@ -60,18 +70,11 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <iframe style="width: 95%; height: 300px; border: nome;" id="iframeFotos"></iframe>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <iframe style="width: 95%; height: 300px; border: nome;" name="iFrameFotos" id="iframeFotos"></iframe>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-
                 <script type="text/javascript">
                     $(document).ready(function () {
 
@@ -141,13 +144,13 @@
                         });
                     }
                     function abreGerenciadorFoto(id) {
-
-                        $("#iframeFotos").attr("src", "./fotos?prodId=" + id + "&cmd=listar");
+                        $("#iframeFotos").attr("src", "./fotos?prodId=" + id + "&action=editar");
                         $("#janelaFotos").modal();
 
                     }
                 </script>
             </main>
         </div>
+        <script src="js/msgjs.js"></script>
     </body>
 </html>

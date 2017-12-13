@@ -4,6 +4,11 @@
 <%@page import="daos.ProdutoDAO"%>
 <%
     ProdutoDAO produtoDAO = new ProdutoDAO();
+    HttpSession sessao = request.getSession();
+    Integer clieId = (Integer) sessao.getAttribute("clieId");
+    String clieNome = (String) sessao.getAttribute("clieNome");
+    request.setAttribute("clieId", clieId);
+    request.setAttribute("clieNome", clieNome);
 
     List<ProdutoModel> listaCategorias = produtoDAO.listaCategorias();
     List<ProdutoModel> listaCores = produtoDAO.listaCores();
@@ -53,7 +58,12 @@
                 </li>
                 <li class="grid"><a href="contato.jsp">Contato</a></li>
                 <li class="grid"><a href="criarconta.jsp">Criar Conta</a></li>
-                <li class="grid"><a href="login.jsp">Login</a></li>
+                    <c:if test="${clieId == null}">
+                    <li class="grid"><a href="login.jsp">Login</a></li>
+                    </c:if>
+                    <c:if test="${clieId != null}">
+                    <li class="grid"><a href="./clientes?action=sair">Sair</a></li>
+                    </c:if>
             </ul>				
         </div>
         <!---->

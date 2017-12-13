@@ -1,5 +1,11 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
+    <%
+        HttpSession sessao = request.getSession();
+        Integer clieId = (Integer) sessao.getAttribute("clieId");
+        request.setAttribute("clieId", clieId);
+    %>
     <!--header-->	
     <jsp:include page="templates/header.html"></jsp:include>
         <!--end header-->
@@ -41,29 +47,28 @@
                             <!-- /Form -->
                         </div>
                     </div>
+                <c:if test="${clieId == null}">
                     <div class="registration_left">
                         <h2>Já possui uma conta? <span> Faça login! </span></h2>
                         <div class="registration_form log">
                             <!-- Form -->
-                            <form>
+                            <form action="./clientes" method="POST">
                                 <h5>*Email</h5>
-                                <input name="email" type="text" required>
+                                <input required type="text" name="email">
                                 <h5>*Senha</h5>
-                                <input type="password" required>
-                                <div>
-                                    <input type="submit" value="Entrar">
-                                </div>
-                                <div class="forget">
-                                    <a href="#">Esqueci minha senha!</a>
-                                </div>
+                                <input required type="password" name="senha">
+                                <input type="hidden" name="action" value="logar">
+                                <input type="submit" value="Login">	
+                                <a class="acount-btn" href="criarconta.jsp">Crie sua conta</a>
                             </form>
                             <!-- /Form -->
                         </div>
                     </div>
-                    <div class="clearfix"></div>
-                </div>
+                </c:if>
+                <div class="clearfix"></div>
             </div>
-            <!--footer-->
+        </div>
+        <!--footer-->
         <jsp:include page="templates/footer.html"></jsp:include>
         <!--end footer-->
     </body>

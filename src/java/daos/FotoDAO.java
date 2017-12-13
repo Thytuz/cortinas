@@ -52,7 +52,27 @@ public class FotoDAO implements DAO {
 
     @Override
     public void salvar(Object ob) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+        FotoModel fotoModel = (FotoModel) ob;
+
+        try {
+            conn = ConnectionDAO.getConnection();
+            ps = conn.prepareStatement("INSERT INTO `fotos` (`fotoSrc`, `fotoProdId`) VALUES (?, ?)");
+            ps.setString(1, fotoModel.getFotoSrc());
+            ps.setInt(2, fotoModel.getProdutoModel().getProdId());
+
+            int resp = ps.executeUpdate();
+            if (resp == 0) {
+                throw new Exception("Erro");
+            }
+
+        } catch (SQLException sqle) {
+            throw new Exception(sqle);
+        } finally {
+            ConnectionDAO.closeConnection(conn, ps, rs);
+        }
     }
 
     public List buscaFotosPorIdProduto(int prodId) throws Exception {

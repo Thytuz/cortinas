@@ -42,24 +42,24 @@
                         <li>
                             <div class="banner1">				  
                                 <div class="banner-info">
-                                    <h3>Morbi lacus hendrerit efficitur.</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit. consectetur adipiscing elit.</p>
+                                    <h3>Soluções para todos os ambientes e estilos de vida</h3>
+                                    <p>Venha ver de perto as novas tendências sobre decoração</p>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="banner2">
                                 <div class="banner-info">
-                                    <h3>Phasellus elementum tincidunt.</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit. consectetur adipiscing elit.</p>
+                                    <h3>Estilo, beleza e qualidade</h3>
+                                    <p>Dê um upgrade nos ambientes de sua casa</p>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="banner3">
                                 <div class="banner-info">
-                                    <h3>Maecenas interposuere volutpat.</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. consectetur adipiscing elit. consectetur adipiscing elit.</p>
+                                    <h3>Diferencial de qualidade e atendimento personalizado</h3>
+                                    <p>Nós somos TOP, venha ser TOP com a gente</p>
                                 </div>
                             </div>
                         </li>

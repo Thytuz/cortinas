@@ -14,7 +14,7 @@
                 <div class="col-md-3 cart-total">
                     <a class="continue" href="produtos.jsp">Continue Comprando</a>
                     <div class="price-details">
-                        <h3>Price Details</h3>
+                        <h3>Detalhes</h3>
                         <span>Total</span>
                         <span class="total1">6200.00</span>
                         <span>Taxas de Entrega</span>

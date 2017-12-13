@@ -27,13 +27,13 @@
                                 <h5>*Nome</h5>
                                 <input required name="nome" type="text">
                                 <h5>*Email</h5>
-                                <input required name="email" type="text">
+                                <input required name="email" type="email">
                                 <h5>Telefone</h5>
-                                <input name="telefone" type="text">
+                                <input class="telefone" name="telefone" type="text">
                                 <h5>*Senha</h5>
-                                <input required name="password" type="password">
+                                <input required id="password" name="password" type="password">
                                 <h5>*Confirme a Senha</h5>
-                                <input required name="passwordOk" type="password">
+                                <input required id="confirm_password" name="passwordOk" type="password">
                                 <div class="sky-form">
                                     <label class="checkbox">
                                         <input required type="checkbox" name="checkbox" ><i></i>Eu li e concordo com os <a class="terms" href="#"> termos de uso</a>
@@ -54,12 +54,12 @@
                             <!-- Form -->
                             <form action="./clientes" method="POST">
                                 <h5>*Email</h5>
-                                <input required type="text" name="email">
+                                <input required type="email" name="email">
                                 <h5>*Senha</h5>
                                 <input required type="password" name="senha">
                                 <input type="hidden" name="action" value="logar">
                                 <input type="submit" value="Login">	
-                                <a class="acount-btn" href="criarconta.jsp">Crie sua conta</a>
+                                <a class="acount-btn" href="criarconta.jsp">CRIE SUA CONTA</a>
                             </form>
                             <!-- /Form -->
                         </div>
@@ -71,5 +71,35 @@
         <!--footer-->
         <jsp:include page="templates/footer.html"></jsp:include>
         <!--end footer-->
+        <script src="http://digitalbush.com/wp-content/uploads/2014/10/jquery.maskedinput.js"></script>
+
+        <script>
+            var password = document.getElementById("password")
+                    , confirm_password = document.getElementById("confirm_password");
+
+            function validatePassword() {
+                if (password.value != confirm_password.value) {
+                    confirm_password.setCustomValidity("Passwords Don't Match");
+                } else {
+                    confirm_password.setCustomValidity('');
+                }
+            }
+
+            password.onchange = validatePassword;
+            confirm_password.onkeyup = validatePassword;
+
+            $("input.telefone").mask("(99) 9999-9999?9").focusout(function (event) {
+                var target, phone, element;
+                target = (event.currentTarget) ? event.currentTarget : event.srcElement;
+                phone = target.value.replace(/\D/g, '');
+                element = $(target);
+                element.unmask();
+                if (phone.length > 10) {
+                    element.mask("(99) 99999-999?9");
+                } else {
+                    element.mask("(99) 9999-9999?9");
+                }
+            });
+        </script>
     </body>
 </html>

@@ -14,7 +14,7 @@
                 %>
                 <form action="./usuarios" method="POST">
                     <label>*Email</label>
-                    <input type="text" name="email" required>
+                    <input type="email" name="email" required>
                     <label>*Senha</label>
                     <input type="password" name="senha" required>
                     <input type="hidden" name="action" value="logar">

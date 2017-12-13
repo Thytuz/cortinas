@@ -23,12 +23,12 @@
                 <div class="col-md-6 log">			 
                     <form action="./clientes" method="POST">
                         <h5>*Email</h5>
-                        <input required type="text" name="email">
+                        <input required type="email" name="email">
                         <h5>*Senha</h5>
                         <input required type="password" name="senha">
                         <input type="hidden" name="action" value="logar">
-                        <input type="submit" value="Login">	
-                        <a class="acount-btn" href="criarconta.jsp">Crie sua conta</a>
+                        <input type="submit" value="LOGIN">	
+                        <a class="acount-btn" href="criarconta.jsp">CRIE SUA CONTA</a>
                     </form>
                     <a href="#">Esqueci minha senha!</a>
 

@@ -67,7 +67,7 @@
                 </div>
             </div>
             <!---->
-            <script src="bootstrap/js/bootstrap.js"></script>
+
             <div class="items">
                 <div class="product-model">
                     <h2>Nossos Produtos</h2>
@@ -77,59 +77,57 @@
                             <input name="action" type="hidden" value="detalhar">
                             <input name="prodId" type="hidden" value="<c:out value="${produto.getProdId()}"/>">
                             <div class="product-grid">
-                                <div class="more-product"><span> </span></div>						
-                                <div class="product-img b-link-stripe b-animate-go  thickbox">
+                                <div class="more-product"><span> </span></div>
+                                <div class="product-img b-link-stripe b-animate-go thickbox">
                                     <c:forEach items="${listaFotos}" var="foto">
                                         <c:if test="${foto.getProdutoModel().getProdId() == produto.getProdId()}">
                                             <img src="<c:out value="images/${foto.getFotoSrc()}"/>" class="img-responsive" alt="">
                                         </c:if>
                                     </c:forEach>
                                     <div class="b-wrapper">
-                                        <h4 class="b-animate b-from-left  b-delay03">							
+                                        <h4 class="b-animate b-from-left b-delay03">
                                             <button type="submit"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Ver</button>
                                         </h4>
                                     </div>
-                                </div></a>						
+                                </div>
                                 <div class="product-info simpleCart_shelfItem">
                                     <div class="product-info-cust prt_name">
-                                        <h4><c:out value="${produto.getProdNome()}"/></h4>								
-                                        <span class="item_price">R$<c:out value="${produto.getProdPreco()}"/></span>
-                                        <input type="text" class="item_quantity" value="1" />
-                                        <input type="button" class="item_add items" value="ADD">
-                                        <div class="clearfix"> </div>
+                                        <h4><c:out value="${produto.getProdNome()}"/></h4>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <span class="item_price">R$<c:out value="${produto.getProdPreco()}"/></span>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <input type="text" class="item_quantity" value="1">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input type="button" class="item_add items" value="ADD">
+                                            </div>
+                                        </div>
                                     </div>												
                                 </div>
                             </div>
                         </form>
                     </c:forEach>
                 </div>
-                <!---->
+            </div>
+        </div>
+        <!---->
 
-                <jsp:include page="templates/subscribe.html"></jsp:include>
-                    <div class="footer">
-                        <div class="container">
-                            <div class="footer-grids">
-                                <div class="col-md-3 about-us">
-                                    <h3>Sobre nós</h3>
-                                    <p>Maecenas nec auctor sem. Vivamus porttitor tincidunt elementum nisi a, euismod rhoncus urna. Curabitur scelerisque vulputate arcu eu pulvinar. Fusce vel neque diam</p>
-                                </div>
-                                <div class="col-md-3 ftr-grid">
-                                    <h3>Informações</h3>
-                                    <ul class="nav-bottom">
-                                        <li><a href="#">Track Order</a></li>
-                                        <li><a href="#">New Products</a></li>
-                                        <li><a href="#">Location</a></li>
-                                        <li><a href="#">Our Stores</a></li>
-                                        <li><a href="#">Best Sellers</a></li>	
-                                    </ul>					
-                                </div>
-
-                                <div class="clearfix"></div>
-                            </div>
+        <jsp:include page="templates/subscribe.html"></jsp:include>
+            <div class="footer">
+                <div class="container">
+                    <div class="footer-grids">
+                        <div class="col-md-6 about-us">
+                            <h3>Sobre nós</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at fringilla purus, a pellentesque ex. Sed et dignissim elit. Sed et ex a neque convallis convallis. Vestibulum urna odio, sagittis sit amet sem a, vulputate molestie nisl. Donec sit amet suscipit massa. Donec tempor elementum purus, quis rhoncus justo ultrices vitae.</p>
                         </div>
+                        <div class="clearfix"></div>
                     </div>
-                    <!--footer-->
-                <jsp:include page="templates/footer.html"></jsp:include>
-                <!--end footer-->
-                </body>
-                </html>
+                </div>
+            </div>
+            <!--footer-->
+        <jsp:include page="templates/footer.html"></jsp:include>
+        <!--end footer-->
+    </body>
+</html>

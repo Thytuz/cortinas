@@ -743,7 +743,7 @@ ul.nav-bottom li:nth-child(1){
 }
 .product-info-cust h4{
     color: #caccce;
-    font-size: 0.95em;
+    font-size: 1.0em;
     font-family: 'Dosis-Bold';
     text-transform: uppercase;
 }
@@ -755,7 +755,7 @@ ul.nav-bottom li:nth-child(1){
 }
 span.item_price{
     color: #000;
-    font-size: 1em;
+    font-size: 2em;
     font-weight: 600;
     margin: 10px 0 5px;
     display:block;
@@ -1628,7 +1628,7 @@ li.last_price span {
 .log form {
     margin-top:2em;
 }
-.log form input[type="text"],.log form input[type="password"] {
+.log form input[type="text"],.log form input[type="password"],.log form input[type="email"] {
     width: 90%;
     padding: 8px;
     font-size: 1em;

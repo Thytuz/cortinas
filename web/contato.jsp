@@ -34,7 +34,7 @@
                                 <p>Brasil</p>
                                 <p>Telefone:(62) 98404-7763</p>
                                 <p>Email: <a href="mailto:diamantecortinas@hotmail.com">diamantecortinas@hotmail.com</a></p>
-                                <p>Follow on: <a href="#">Facebook</a>, <a href="#">Twitter</a></p>
+                                <p>Nos siga: <a href="#">Facebook</a>, <a href="#">Twitter</a></p>
                             </div>
                         </div>				
                         <div class="registration">
@@ -45,13 +45,13 @@
                                         <h5>*Nome</h5>
                                         <input required name="userName" type="text" class="textbox">
                                         <h5>*Email</h5>
-                                        <input required name="userEmail"type="text" class="textbox">
+                                        <input required name="userEmail"type="email" class="textbox">
 
                                         <h5>Telefone</h5>
-                                        <input name="userPhone" type="text" class="textbox">
+                                        <input class="telefone" name="userPhone" type="text" class="textbox">
 
                                         <h5>*Mensagem</h5>
-                                        <span><textarea name="userMsg"> </textarea></span>
+                                        <span><textarea required name="userMsg"></textarea></span>
                                         <div>
                                             <span><input type="submit" class="mybutton" value="Enviar"></span>
                                         </div>
@@ -65,5 +65,20 @@
             <!--footer-->
         <jsp:include page="templates/footer.html"></jsp:include>
         <!--end footer-->
+        <script src="http://digitalbush.com/wp-content/uploads/2014/10/jquery.maskedinput.js"></script>
+        <script>
+            $("input.telefone").mask("(99) 9999-9999?9").focusout(function (event) {
+                var target, phone, element;
+                target = (event.currentTarget) ? event.currentTarget : event.srcElement;
+                phone = target.value.replace(/\D/g, '');
+                element = $(target);
+                element.unmask();
+                if (phone.length > 10) {
+                    element.mask("(99) 99999-999?9");
+                } else {
+                    element.mask("(99) 9999-9999?9");
+                }
+            });
+        </script>
     </body>
 </html>
